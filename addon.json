@@ -1,0 +1,11 @@
+{
+    "application": {
+        "name": "AddKit",
+        "namespace": "addkit",
+        "version": "1.0",
+        "author": "saintekno",
+        "description": "AddKit by SainTekno",
+        "main": "main.php",
+        "readonly": false
+    }
+}
