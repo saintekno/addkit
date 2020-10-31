@@ -31,6 +31,7 @@ class AddKit_Install extends CI_model
     public function install_tables()
     {
 		$table_prefix =	$this->db->dbprefix;
+        $this->db->query("DROP TABLE IF EXISTS `{$table_prefix}addkit`;");
         $this->db->query('CREATE TABLE IF NOT EXISTS `'.$table_prefix.'addkit` (
             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
             `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
