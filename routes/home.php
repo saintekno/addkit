@@ -1,10 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class AddKit_Home_Controller extends MY_Model
+class AddKit_Home_Controller extends CI_Model
 {
-    protected $table_name = 'addkit';
-
 	public function __construct()
 	{
 		parent::__construct();
