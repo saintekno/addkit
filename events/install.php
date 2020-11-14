@@ -1,6 +1,17 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * SainSuite
+ *
+ * Engine Management System
+ *
+ * @package     SainSuite
+ * @copyright   Copyright (c) 2019-2020 Buddy Winangun, Eracik.
+ * @copyright   Copyright (c) 2020 SainTekno, SainSuite.
+ * @link        https://github.com/saintekno/sainsuite
+ * @filesource
+ */
 class AddKit_Install extends CI_model
 {
     public function __construct()
@@ -8,10 +19,11 @@ class AddKit_Install extends CI_model
         parent::__construct();
 
         // Installation
-        // $this->events->add_action('do_enable_addon', [ $this, 'enable' ] );
-        // $this->events->add_action('do_remove_addon', [ $this, 'remove' ] );
-        // $this->events->add_action('settings_tables', [ $this, 'install_tables' ] );
-        // $this->events->add_action('settings_final_config', [ $this, 'final_config' ] );
+        $this->events->add_action('do_enable_addon', [ $this, 'enable' ] );
+        $this->events->add_action('do_remove_addon', [ $this, 'remove' ] );
+        $this->events->add_action('do_disable_addon', [ $this, 'remove' ] );
+        $this->events->add_action('settings_tables', [ $this, 'install_tables' ] );
+        $this->events->add_action('settings_final_config', [ $this, 'final_config' ] );
     }
     
     public function enable($namespace)
@@ -30,12 +42,12 @@ class AddKit_Install extends CI_model
     **/
     public function install_tables()
     {
-		$table_prefix =	$this->db->dbprefix;
+        $table_prefix =	$this->db->dbprefix;
+
         $this->db->query("DROP TABLE IF EXISTS `{$table_prefix}addkit`;");
-        $this->db->query('CREATE TABLE IF NOT EXISTS `'.$table_prefix.'addkit` (
-            `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-            `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-            PRIMARY KEY (`id`)
+        $this->db->query('CREATE TABLE `'.$table_prefix.'addkit` (
+          `id` int(11) NOT NULL AUTO_INCREMENT,
+          PRIMARY KEY (`id`)
         )');
     }
 
@@ -59,9 +71,8 @@ class AddKit_Install extends CI_model
     {
         if ($namespace != 'addkit') : return ;
         endif;
-
+        
 		$this->db->query('DROP TABLE IF EXISTS `'.$this->db->dbprefix.'addkit`;');
     }
-    
 }
 new AddKit_Install;
