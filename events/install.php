@@ -26,6 +26,11 @@ class AddKit_Install extends CI_model
         $this->events->add_action('settings_final_config', [ $this, 'final_config' ] );
     }
     
+    /**
+     * Enable addon
+     *
+     * @return void
+    **/
     public function enable($namespace)
     {
         if ($namespace === 'addkit' && $this->options_model->get('addkit_installed') == null) {

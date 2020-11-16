@@ -17,6 +17,9 @@ class AddKit_Menu extends CI_model
     public function __construct()
     {
 		parent::__construct();
+        // $this->events->add_action('setting_menu', array( $this, 'set_setting_menu' ));
+        // $this->events->add_action('apps_menu', array( $this, 'set_app_menu' ));
+        // $this->events->add_action('system_menu', array( $this, 'set_system_menu' ));
     }
 }
 new AddKit_Menu;
