@@ -19,6 +19,8 @@ class AddKit_Controller extends CI_Model
         parent::__construct();
         $this->load->model('addkit_model');
         $this->load->library('form_validation');
+
+        $this->breadcrumb->add('Home', site_url('admin'));
     }
 
     /**
@@ -48,8 +50,12 @@ class AddKit_Controller extends CI_Model
         // Title
 		Polatan::set_title(sprintf(__('AddKit &mdash; %s', 'addkit'), get('signature')));
         
+        // BreadCrumb
+        $this->breadcrumb->add('AddKit', site_url('admin/addkit'));
+
+        $data['breadcrumbs'] = $this->breadcrumb->render();
         $data['addkits'] = $this->addkit_model->get_all();
-        $this->load->addon_view( 'addkit', 'read' );
+        $this->load->addon_view( 'addkit', 'read', $data );
     }
 
     /**
@@ -90,9 +96,13 @@ class AddKit_Controller extends CI_Model
         }
         
         // Title
-		Polatan::set_title(sprintf(__('AddKit &mdash; %s', 'addkit'), get('signature')));
+        Polatan::set_title(sprintf(__('AddKit &mdash; %s', 'addkit'), get('signature')));
         
-        $this->load->addon_view( 'addkit', 'add' );
+        // BreadCrumb
+        $this->breadcrumb->add('AddKit', site_url('admin/addkit'));
+
+        $data['breadcrumbs'] = $this->breadcrumb->render();
+        $this->load->addon_view( 'addkit', 'add', $data );
     }
 
     /**
@@ -137,6 +147,10 @@ class AddKit_Controller extends CI_Model
         // Title
 		Polatan::set_title(sprintf(__('AddKit &mdash; %s', 'addkit'), get('signature')));
         
+        // BreadCrumb
+        $this->breadcrumb->add('AddKit', site_url('admin/addkit'));
+
+        $data['breadcrumbs'] = $this->breadcrumb->render();
         $data['addkit'] = $this->addkit_model->get($index);
         $this->load->addon_view( 'addkit', 'edit' );
     }
