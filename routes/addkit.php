@@ -151,7 +151,7 @@ class AddKit_Controller extends CI_Model
         $this->breadcrumb->add('AddKit', site_url('admin/addkit'));
 
         $data['breadcrumbs'] = $this->breadcrumb->render();
-        $data['addkit'] = $this->addkit_model->get($index);
+        $data['addkit'] = $this->addkit_model->find($index);
         $this->load->addon_view( 'addkit', 'edit' );
     }
 
@@ -167,7 +167,11 @@ class AddKit_Controller extends CI_Model
             redirect(site_url('admin/page404'));
         }
 
-        $exec = $this->addkit_model->delete($index);
-        redirect(array( 'admin', 'addkit?notice=' . $exec ));
+        if ($this->addkit_model->delete($index)) {
+            redirect(array( 'admin', 'addkit?notice=user-deleted' ));
+        } else {
+            $this->session->set_flashdata('flash_message', __('unexpected-error'));
+            redirect(current_url(), 'refresh');
+        };
     }
 }

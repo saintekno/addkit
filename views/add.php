@@ -41,7 +41,7 @@ $this->polatan->add_meta(array(
 $this->polatan->add_item(array(
     'type'  => 'text',
     'label' => __('Name'),
-    'name'  => 'addkitname',
+    'name'  => 'name',
 ), 'create_addkit', 1);
 
 $this->polatan->output();

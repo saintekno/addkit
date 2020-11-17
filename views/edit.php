@@ -30,7 +30,7 @@ $this->polatan->add_meta(array(
     ),
     'footer' => array(
         'submit' => array(
-            'label' => __('Edit AddKit', 'aauth')
+            'label' => __('Edit AddKit')
         )
     ),
     'type' => 'card'
@@ -42,9 +42,9 @@ $this->polatan->add_meta(array(
 $this->polatan->add_item(array(
     'type'     => 'text',
     'label'    => __('Name'),
-    'name'     => 'addkitname',
+    'name'     => 'name',
     'disabled' => true,
-    'value'    => $addkit->addkitname
+    'value'    => $addkit->name
 ), 'edit_addkit', 1);
 
 $this->polatan->output();

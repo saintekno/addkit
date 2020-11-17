@@ -12,31 +12,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * @link        https://github.com/saintekno/sainsuite
  * @filesource
  */
-class AddKit_model extends CI_Model
+class AddKit_model extends MY_Model
 {
     protected $table_name = 'addkit';
 
     public function __construct()
     {
         parent::__construct();
-    }
-
-    /**
-     * get addkit
-     * @return
-     */
-    public function get($id)
-    {
-
-    }
-
-    /**
-     * get_all addkit
-     * @return
-     */
-    public function get_all()
-    {
-
     }
 
     /**
@@ -56,15 +38,5 @@ class AddKit_model extends CI_Model
     public function edit($id)
     {
         return 'updated';
-    }
-
-    /**
-     * Delete addkit
-     * @param int addkit id
-     * @return
-     */
-    public function delete($id)
-    {
-        return 'deleted';
     }
 }
