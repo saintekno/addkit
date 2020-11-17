@@ -73,6 +73,9 @@ class AddKit_Controller extends CI_Model
 			);
 			return $final;
         });
+
+        // POST data
+        $this->load->library('form_validation');
         
         $this->form_validation->set_rules('addkit', 'AddKit', 'required');
         if ($this->form_validation->run()) 
@@ -114,21 +117,25 @@ class AddKit_Controller extends CI_Model
 			);
 			return $final;
         });
-        
-        // Title
-		Polatan::set_title(sprintf(__('AddKit &mdash; %s', 'addkit'), get('signature')));
-        
+
+        // POST data
+        $this->load->library('form_validation');
+
         $this->form_validation->set_rules('addkit', 'AddKit', 'required');
         if ($this->form_validation->run()) 
         { 
             $exec = $this->addkit_model->edit($index);
 
             if ($exec == 'updated') {
-                redirect(array( 'admin', 'addkit', 'edit?notice=' . $exec ));
+                $this->session->set_flashdata('flash_message', $exec);
+                redirect(current_url(), 'refresh');
             } else {
                 $this->notice->push_notice_array($exec);
             }
         }
+        
+        // Title
+		Polatan::set_title(sprintf(__('AddKit &mdash; %s', 'addkit'), get('signature')));
         
         $data['addkit'] = $this->addkit_model->get($index);
         $this->load->addon_view( 'addkit', 'edit' );

@@ -12,7 +12,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * @link        https://github.com/saintekno/sainsuite
  * @filesource
  */
-class User_model extends CI_Model
+class AddKit_model extends CI_Model
 {
     protected $table_name = 'addkit';
 
