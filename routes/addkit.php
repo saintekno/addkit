@@ -48,7 +48,7 @@ class AddKit_Controller extends CI_Model
         };
         
         // Title
-		Polatan::set_title(sprintf(__('AddKit &mdash; %s', 'addkit'), get('signature')));
+		Polatan::set_title(sprintf(__('AddKit &mdash; %s'), get('signature')));
         
         // BreadCrumb
         $this->breadcrumb->add('AddKit', site_url('admin/addkit'));
@@ -96,7 +96,7 @@ class AddKit_Controller extends CI_Model
         }
         
         // Title
-        Polatan::set_title(sprintf(__('AddKit &mdash; %s', 'addkit'), get('signature')));
+        Polatan::set_title(sprintf(__('AddKit &mdash; %s'), get('signature')));
         
         // BreadCrumb
         $this->breadcrumb->add('AddKit', site_url('admin/addkit'));
@@ -145,7 +145,7 @@ class AddKit_Controller extends CI_Model
         }
         
         // Title
-		Polatan::set_title(sprintf(__('AddKit &mdash; %s', 'addkit'), get('signature')));
+		Polatan::set_title(sprintf(__('AddKit &mdash; %s'), get('signature')));
         
         // BreadCrumb
         $this->breadcrumb->add('AddKit', site_url('admin/addkit'));
