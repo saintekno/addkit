@@ -15,7 +15,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 global $Routes;
 
-$Routes->get( '/', 'AddKitHomeController@index' );
-$Routes->match([ 'get', 'post' ], 'addkit/add', 'AddKitHomeController@add' );
-$Routes->match([ 'get', 'post' ], 'addkit/edit/{id}', 'AddKitHomeController@edit' );
-$Routes->match([ 'get', 'post' ], 'addkit/delete/{id}', 'AddKitHomeController@delete' );
+$Routes->group(['prefix' => '/addkit'], function () use ( $Routes ) {
+    $Routes->match([ 'get', 'post' ], '/', 'AddKit_Controller@index' );
+    $Routes->match([ 'get', 'post' ], 'add', 'AddKit_Controller@add' );
+    $Routes->match([ 'get', 'post' ], 'edit/{id}', 'AddKit_Controller@edit' );
+    $Routes->match([ 'get', 'post' ], 'delete/{id}', 'AddKit_Controller@delete' );
+});

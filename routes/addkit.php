@@ -17,10 +17,10 @@ class AddKit_Controller extends CI_Model
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('addkit_model');
-        $this->load->library('form_validation');
 
-        $this->breadcrumb->add('Home', site_url('admin'));
+        $this->events->add_filter( 'aside_menu', array( new HRD_Filters, '_aside_menu' ));
+        
+        $this->load->model('addkit_model');
     }
 
     /**
@@ -51,10 +51,11 @@ class AddKit_Controller extends CI_Model
 		Polatan::set_title(sprintf(__('AddKit &mdash; %s'), get('signature')));
         
         // BreadCrumb
+        $this->breadcrumb->add('Home', site_url('admin'));
         $this->breadcrumb->add('AddKit', site_url('admin/addkit'));
 
         $data['breadcrumbs'] = $this->breadcrumb->render();
-        $data['addkits'] = $this->addkit_model->get_all();
+        $data['addkits'] = $this->addkit_model->find_all();
         $this->load->addon_view( 'addkit', 'read', $data );
     }
 
@@ -99,7 +100,9 @@ class AddKit_Controller extends CI_Model
         Polatan::set_title(sprintf(__('AddKit &mdash; %s'), get('signature')));
         
         // BreadCrumb
+        $this->breadcrumb->add('Home', site_url('admin'));
         $this->breadcrumb->add('AddKit', site_url('admin/addkit'));
+        $this->breadcrumb->add('Add New', site_url('admin/addkit/add'));
 
         $data['breadcrumbs'] = $this->breadcrumb->render();
         $this->load->addon_view( 'addkit', 'add', $data );
@@ -148,11 +151,13 @@ class AddKit_Controller extends CI_Model
 		Polatan::set_title(sprintf(__('AddKit &mdash; %s'), get('signature')));
         
         // BreadCrumb
+        $this->breadcrumb->add('Home', site_url('admin'));
         $this->breadcrumb->add('AddKit', site_url('admin/addkit'));
+        $this->breadcrumb->add('Edit', site_url('admin/addkit/edit'));
 
         $data['breadcrumbs'] = $this->breadcrumb->render();
         $data['addkit'] = $this->addkit_model->find($index);
-        $this->load->addon_view( 'addkit', 'edit' );
+        $this->load->addon_view( 'addkit', 'edit', $data );
     }
 
     /**
@@ -168,7 +173,7 @@ class AddKit_Controller extends CI_Model
         }
 
         if ($this->addkit_model->delete($index)) {
-            redirect(array( 'admin', 'addkit?notice=user-deleted' ));
+            redirect(array( 'admin', 'addkit?notice=deleted' ));
         } else {
             $this->session->set_flashdata('flash_message', __('unexpected-error'));
             redirect(current_url(), 'refresh');
