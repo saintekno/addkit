@@ -38,6 +38,7 @@ class AddKit_Install extends CI_model
             // Install Tables
             $this->install_tables();
             $this->final_config();
+            $this->permissions();
         }
     }
 
@@ -111,7 +112,7 @@ class AddKit_Install extends CI_model
         $this->aauth->delete_perm('delete.addkit');
 
         // Defaut options_model
-        $this->options_model->delete('addkit_installed', 'addkit');
+        $this->options_model->delete(null, 'addkit');
     }
 
     /**
@@ -124,8 +125,14 @@ class AddKit_Install extends CI_model
         if ($namespace != 'addkit') : return ;
         endif;
 
+        // Delete Permissions
+        $this->aauth->delete_perm('read.addkit');
+        $this->aauth->delete_perm('create.addkit');
+        $this->aauth->delete_perm('edit.addkit');
+        $this->aauth->delete_perm('delete.addkit');
+
         // Defaut options_model
-        $this->options_model->delete('addkit_installed', 'addkit');
+        $this->options_model->delete(null, 'addkit');
     }
 }
 new AddKit_Install;
