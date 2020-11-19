@@ -23,7 +23,7 @@ class AddKit_Install extends CI_model
         $this->events->add_action('do_remove_addon', [ $this, 'remove' ] );
         $this->events->add_action('do_disable_addon', [ $this, 'disable' ] );
         $this->events->add_action('settings_tables', [ $this, 'install_tables' ] );
-        $this->events->add_action('settings_tables', [ $this, 'permissions' ] );
+        $this->events->add_action('settings_final_config', [ $this, 'permissions' ] );
         $this->events->add_action('settings_final_config', [ $this, 'final_config' ] );
     }
     
