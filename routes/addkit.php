@@ -18,7 +18,7 @@ class AddKit_Controller extends CI_Model
     {
         parent::__construct();
 
-        $this->events->add_filter( 'aside_menu', array( new HRD_Filters, '_aside_menu' ));
+        $this->events->add_filter( 'aside_menu', array( new AddKit_Menu, '_aside_menu' ));
         
         $this->load->model('addkit_model');
     }
@@ -38,7 +38,7 @@ class AddKit_Controller extends CI_Model
         if ( User::control('create.addkit') ) {
             $this->events->add_filter( 'toolbar_menu', function( $final ) {
                 $final[] = array(
-                    'title'   => __('Add A addkit'),
+                    'title'   => __('Add A AddKit'),
                     'icon'    => 'ki ki-plus',
                     'button'  => 'btn-light-primary',
                     'href'    => site_url([ 'admin', 'addkit', 'add' ])
