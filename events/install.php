@@ -21,8 +21,9 @@ class AddKit_Install extends CI_model
         // Installation
         $this->events->add_action('do_enable_addon', [ $this, 'enable' ] );
         $this->events->add_action('do_remove_addon', [ $this, 'remove' ] );
-        $this->events->add_action('do_disable_addon', [ $this, 'remove' ] );
+        $this->events->add_action('do_disable_addon', [ $this, 'disable' ] );
         $this->events->add_action('settings_tables', [ $this, 'install_tables' ] );
+        $this->events->add_action('settings_tables', [ $this, 'permissions' ] );
         $this->events->add_action('settings_final_config', [ $this, 'final_config' ] );
     }
     
@@ -57,6 +58,29 @@ class AddKit_Install extends CI_model
     }
 
     /**
+     * Install tables
+     *
+     * @return void
+    **/
+    public function permissions()
+    {
+        // Addkit Permissions
+        $this->aauth->create_perm('read.addkit', __('Read addkit'));
+        $this->aauth->create_perm('create.addkit', __('Create addkit'));
+        $this->aauth->create_perm('edit.addkit', __('Edit addkit'));
+        $this->aauth->create_perm('delete.addkit', __('Delete addkit'));
+
+        /**
+         * Assign Permission to Groups
+        **/
+        // Member
+        $this->aauth->allow_group('member', 'read.addkit');
+        $this->aauth->allow_group('member', 'create.addkit');
+        $this->aauth->allow_group('member', 'update.addkit');
+        $this->aauth->allow_group('member', 'delete.addkit');
+    }
+
+    /**
      * Final Config
      *
      * @return void
@@ -77,7 +101,31 @@ class AddKit_Install extends CI_model
         if ($namespace != 'addkit') : return ;
         endif;
         
-		$this->db->query('DROP TABLE IF EXISTS `'.$this->db->dbprefix.'addkit`;');
+        // Delete Table
+        $this->db->query('DROP TABLE IF EXISTS `'.$this->db->dbprefix.'addkit`;');
+        
+        // Delete Permissions
+        $this->aauth->delete_perm('read.addkit');
+        $this->aauth->delete_perm('create.addkit');
+        $this->aauth->delete_perm('edit.addkit');
+        $this->aauth->delete_perm('delete.addkit');
+
+        // Defaut options_model
+        $this->options_model->delete('addkit_installed', 'addkit');
+    }
+
+    /**
+     * Disable
+     *
+     * @return void
+    **/
+    public function disable($namespace)
+    {
+        if ($namespace != 'addkit') : return ;
+        endif;
+
+        // Defaut options_model
+        $this->options_model->delete('addkit_installed', 'addkit');
     }
 }
 new AddKit_Install;
