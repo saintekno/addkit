@@ -12,7 +12,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * @link        https://github.com/saintekno/sainsuite
  * @filesource
  */
-class AddKit_Controller extends CI_Model
+class AddKit_Controller extends MY_Addon
 {
     public function __construct()
     {
@@ -56,7 +56,7 @@ class AddKit_Controller extends CI_Model
 
         $data['breadcrumbs'] = $this->breadcrumb->render();
         $data['addkits'] = $this->addkit_model->find_all();
-        $this->load->addon_view( 'addkit', 'read', $data );
+        $this->addon_view( 'addkit', 'read', $data );
     }
 
     /**
@@ -105,7 +105,7 @@ class AddKit_Controller extends CI_Model
         $this->breadcrumb->add('Add New', site_url('admin/addkit/add'));
 
         $data['breadcrumbs'] = $this->breadcrumb->render();
-        $this->load->addon_view( 'addkit', 'add', $data );
+        $this->addon_view( 'addkit', 'add', $data );
     }
 
     /**
@@ -157,7 +157,7 @@ class AddKit_Controller extends CI_Model
 
         $data['breadcrumbs'] = $this->breadcrumb->render();
         $data['addkit'] = $this->addkit_model->find($index);
-        $this->load->addon_view( 'addkit', 'edit', $data );
+        $this->addon_view( 'addkit', 'edit', $data );
     }
 
     /**
