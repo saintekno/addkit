@@ -6,6 +6,7 @@
         "author": "saintekno",
         "description": "AddKit by SainTekno",
         "main": "main.php",
+        "language": "language",
         "readonly": false
     }
 }

@@ -38,7 +38,7 @@ class AddKit_Controller extends MY_Addon
         if ( User::control('create.addkit') ) {
             $this->events->add_filter( 'toolbar_menu', function( $final ) {
                 $final[] = array(
-                    'title'   => __('Add A AddKit'),
+                    'title'   => __('Add A AddKit', 'addkit'),
                     'icon'    => 'ki ki-plus',
                     'button'  => 'btn-light-primary',
                     'href'    => site_url([ 'admin', 'addkit', 'add' ])
@@ -48,11 +48,11 @@ class AddKit_Controller extends MY_Addon
         };
         
         // Title
-		Polatan::set_title(sprintf(__('AddKit &mdash; %s'), get('signature')));
+		Polatan::set_title(sprintf(__('AddKit &mdash; %s', 'addkit'), get('signature')));
         
         // BreadCrumb
-        $this->breadcrumb->add('Home', site_url('admin'));
-        $this->breadcrumb->add('AddKit', site_url('admin/addkit'));
+        $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
+        $this->breadcrumb->add(__('AddKit', 'addkit'), site_url('admin/addkit'));
 
         $data['breadcrumbs'] = $this->breadcrumb->render();
         $data['addkits'] = $this->addkit_model->find_all();
@@ -73,7 +73,7 @@ class AddKit_Controller extends MY_Addon
         // Toolbar
         $this->events->add_filter( 'toolbar_menu', function( $final ) {
 			$final[] = array(
-				'title'   => __('Back to the list'),
+				'title'   => __('Back to the list', 'addkit'),
 				'icon'    => 'ki ki-long-arrow-back',
 				'button'  => 'btn-light-primary',
 				'href'    => site_url([ 'admin', 'addkit' ])
@@ -97,12 +97,12 @@ class AddKit_Controller extends MY_Addon
         }
         
         // Title
-        Polatan::set_title(sprintf(__('AddKit &mdash; %s'), get('signature')));
+        Polatan::set_title(sprintf(__('AddKit &mdash; %s', 'addkit'), get('signature')));
         
         // BreadCrumb
-        $this->breadcrumb->add('Home', site_url('admin'));
-        $this->breadcrumb->add('AddKit', site_url('admin/addkit'));
-        $this->breadcrumb->add('Add New', site_url('admin/addkit/add'));
+        $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
+        $this->breadcrumb->add(__('AddKit', 'addkit'), site_url('admin/addkit'));
+        $this->breadcrumb->add(__('Add New', 'addkit'), site_url('admin/addkit/add'));
 
         $data['breadcrumbs'] = $this->breadcrumb->render();
         $this->addon_view( 'addkit', 'add', $data );
@@ -123,7 +123,7 @@ class AddKit_Controller extends MY_Addon
         // Toolbar
         $this->events->add_filter( 'toolbar_menu', function( $final ) {
 			$final[] = array(
-				'title'   => __('Back to the list'),
+				'title'   => __('Back to the list', 'addkit'),
 				'icon'    => 'ki ki-long-arrow-back',
 				'button'  => 'btn-light-primary',
 				'href'    => site_url([ 'admin', 'addkit' ])
@@ -151,9 +151,9 @@ class AddKit_Controller extends MY_Addon
 		Polatan::set_title(sprintf(__('AddKit &mdash; %s'), get('signature')));
         
         // BreadCrumb
-        $this->breadcrumb->add('Home', site_url('admin'));
-        $this->breadcrumb->add('AddKit', site_url('admin/addkit'));
-        $this->breadcrumb->add('Edit', site_url('admin/addkit/edit'));
+        $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
+        $this->breadcrumb->add(__('AddKit', 'addkit'), site_url('admin/addkit'));
+        $this->breadcrumb->add(__('Edit', 'addkit'), site_url('admin/addkit/edit'));
 
         $data['breadcrumbs'] = $this->breadcrumb->render();
         $data['addkit'] = $this->addkit_model->find($index);
