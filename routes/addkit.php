@@ -105,7 +105,7 @@ class AddKit_Controller extends MY_Addon
         $this->breadcrumb->add(__('Add New', 'addkit'), site_url('admin/addkit/add'));
 
         $data['breadcrumbs'] = $this->breadcrumb->render();
-        $this->addon_view( 'addkit', 'add', $data );
+        $this->addon_view( 'addkit', 'form', $data );
     }
 
     /**
@@ -157,7 +157,7 @@ class AddKit_Controller extends MY_Addon
 
         $data['breadcrumbs'] = $this->breadcrumb->render();
         $data['addkit'] = $this->addkit_model->find($index);
-        $this->addon_view( 'addkit', 'edit', $data );
+        $this->addon_view( 'addkit', 'form', $data );
     }
 
     /**
