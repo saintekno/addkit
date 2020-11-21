@@ -71,10 +71,7 @@ class AddKit_Install extends CI_model
         $this->aauth->create_perm('edit.addkit', __('Edit addkit'));
         $this->aauth->create_perm('delete.addkit', __('Delete addkit'));
 
-        /**
-         * Assign Permission to Groups
-        **/
-        // Member
+        // Assign Permission Addkit to Groups
         $this->aauth->allow_group('member', 'read.addkit');
         $this->aauth->allow_group('member', 'create.addkit');
         $this->aauth->allow_group('member', 'update.addkit');
