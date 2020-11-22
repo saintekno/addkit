@@ -23,7 +23,7 @@ $this->polatan->col_width(1, 2);
  */
 $this->polatan->add_meta(array(
     'col_id'    => 1,
-    'namespace' => 'edit_addkit',
+    'namespace' => 'form_addkit',
     'gui_saver' => false,
     'form'      => array(
         'action' => null,
@@ -45,6 +45,6 @@ $this->polatan->add_item(array(
     'name'     => 'name',
     'disabled' => true,
     'value'    => (isset($addkit)) ? $addkit->name : '',
-), 'edit_addkit', 1);
+), 'form_addkit', 1);
 
 $this->polatan->output();
