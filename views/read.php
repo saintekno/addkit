@@ -21,7 +21,7 @@ foreach (force_array($addkits) as $row) {
         '<a href="' . site_url(array( 'admin', 'addkit', 'edit', $row->id )) . '" 
             class="btn btn-icon btn-light btn-hover-primary btn-sm"><i class="fas fa-pen"></i></a>
         <button class="btn btn-icon btn-light btn-hover-danger btn-sm"
-            data-head=\'' . _s( 'Would you like to delete this account ?', 'aauth' ) . '\'
+            data-head=\'' . _s( 'Would you like to delete this data?', 'aauth' ) . '\'
             data-url=\'' . site_url(array( 'admin', 'addkit', 'delete', $row->id )) . '\'
             onclick="deleteConfirmation(this)"><i class="fas fa-trash-alt"></i></button>' ,
     );
