@@ -75,7 +75,7 @@ class AddKit_Controller extends MY_Addon
 			$final[] = array(
 				'title'   => __('Back to the list', 'addkit'),
 				'icon'    => 'ki ki-long-arrow-back',
-				'button'  => 'btn-light-primary',
+				'button'  => 'btn-light',
 				'href'    => site_url([ 'admin', 'addkit' ])
 			);
 			return $final;
@@ -125,7 +125,7 @@ class AddKit_Controller extends MY_Addon
 			$final[] = array(
 				'title'   => __('Back to the list', 'addkit'),
 				'icon'    => 'ki ki-long-arrow-back',
-				'button'  => 'btn-light-primary',
+				'button'  => 'btn-light',
 				'href'    => site_url([ 'admin', 'addkit' ])
 			);
 			return $final;
@@ -178,5 +178,27 @@ class AddKit_Controller extends MY_Addon
             $this->session->set_flashdata('flash_message', __('unexpected-error'));
             redirect(current_url(), 'refresh');
         };
+    }
+
+    /**
+     * Delete user
+     * @return redirect
+     */
+
+    public function multidelete()
+    {
+        if (! User::control('delete.users')) {
+            $this->session->set_flashdata('info_message', __( 'Access denied. Youre not allowed to see this page.' ));
+            redirect(site_url('admin/page404'));
+        }
+
+        $ids = $this->input->post('ids');
+
+        foreach($ids as $id){
+            $this->addkit_model->delete($id);
+        }
+
+        echo 1;
+        exit;
     }
 }

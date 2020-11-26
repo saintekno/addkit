@@ -2,7 +2,7 @@
     "application": {
         "name": "AddKit",
         "namespace": "addkit",
-        "version": "3.0",
+        "version": "3.1",
         "author": "saintekno",
         "description": "AddKit by SainTekno",
         "main": "main.php",

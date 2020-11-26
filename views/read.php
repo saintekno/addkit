@@ -17,6 +17,7 @@ $complete_addkit = array();
 // adding addkit to complete_addkit array
 foreach (force_array($addkits) as $row) {
     $complete_addkit[] = array(
+        $row->id,
         '<a href="' . site_url(array( 'admin', 'addkit', 'edit', $row->id )) . '" 
             class="btn btn-icon btn-light btn-hover-primary btn-sm"><i class="fas fa-pen"></i></a>
         <button class="btn btn-icon btn-light btn-hover-danger btn-sm"
@@ -35,7 +36,7 @@ $this->polatan->col_width(1, 4);
  * Meta
  */
 $this->polatan->add_meta(array(
-    'namespace'  => 'addkit-list',
+    'namespace'  => 'addkit',
     'col_id' => 1,
     'type' => 'card'
 ));
@@ -46,9 +47,17 @@ $this->polatan->add_meta(array(
 $this->polatan->add_item(array(
     'type'  => 'table-default',
     'thead' => array(
-        'Actions'
+        __('Checkall'), 
+        __('Actions') 
     ),
     'tbody' => $complete_addkit
-), 'addkit-list', 1);
+), 'addkit', 1);
+
+/**
+ * Script
+ */
+$this->events->add_action( 'dashboard_footer', function() {
+    $this->load->addon_view( 'addkit', 'addkit/script');
+});
 
 $this->polatan->output();
