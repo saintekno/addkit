@@ -18,7 +18,7 @@ class AddKit_Controller extends MY_Addon
     {
         parent::__construct();
 
-        $this->events->add_filter( 'aside_menu', array( new AddKit_Menu, '_aside_menu' ));
+        $this->events->add_filter( 'header_menu', array( new AddKit_Menu, '_header_menu' ));
         
         $this->load->model('addkit_model');
     }

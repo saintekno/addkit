@@ -14,16 +14,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
  */
 
 $complete_addkit = array();
+$edit_addkit     = '';
+$hapus_addkit    = '';
 // adding addkit to complete_addkit array
 foreach (force_array($addkits) as $row) {
+    if ( User::control('edit.addkit')) {
+        $edit_addkit = '<a href="' . site_url(array( 'admin', 'addkit', 'edit', $row->id )) . '" 
+                class="btn btn-icon btn-light btn-hover-primary btn-sm"><i class="fas fa-pen"></i></a>';
+    }
+    if ( User::control('delete.addkit')) {
+        $hapus_addkit = '<button class="btn btn-icon btn-light btn-hover-danger btn-sm"
+                data-head=\'' . _s( 'Would you like to delete this data?', 'aauth' ) . '\'
+                data-url=\'' . site_url(array( 'admin', 'addkit', 'delete', $row->id )) . '\'
+                onclick="deleteConfirmation(this)"><i class="fas fa-trash-alt"></i></button>';
+    }
     $complete_addkit[] = array(
         $row->id,
-        '<a href="' . site_url(array( 'admin', 'addkit', 'edit', $row->id )) . '" 
-            class="btn btn-icon btn-light btn-hover-primary btn-sm"><i class="fas fa-pen"></i></a>
-        <button class="btn btn-icon btn-light btn-hover-danger btn-sm"
-            data-head=\'' . _s( 'Would you like to delete this data?', 'aauth' ) . '\'
-            data-url=\'' . site_url(array( 'admin', 'addkit', 'delete', $row->id )) . '\'
-            onclick="deleteConfirmation(this)"><i class="fas fa-trash-alt"></i></button>' ,
+        $edit_addkit.' '.$hapus_addkit
     );
 }
 
