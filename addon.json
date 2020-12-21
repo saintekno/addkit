@@ -8,5 +8,6 @@
         "main": "main.php",
         "language": "language",
         "readonly": false
-    }
+    },
+    "group": "By AddKit"
 }
