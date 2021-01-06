@@ -8,7 +8,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  * @package     SainSuite
  * @copyright   Copyright (c) 2019-2020 Buddy Winangun, Eracik.
- * @copyright   Copyright (c) 2020 SainTekno, SainSuite.
+ * @copyright   Copyright (c) 2020-2021 SainTekno, SainSuite.
  * @link        https://github.com/saintekno/sainsuite
  * @filesource
  */
@@ -48,11 +48,11 @@ class AddKit_Install extends CI_model
     {
         $table_prefix =	$this->db->dbprefix;
 
-        $this->db->query("DROP TABLE IF EXISTS `{$table_prefix}addkit`;");
-        $this->db->query('CREATE TABLE `'.$table_prefix.'addkit` (
-          `id` int(11) NOT NULL AUTO_INCREMENT,
-          PRIMARY KEY (`id`)
-        )');
+        // $this->db->query("DROP TABLE IF EXISTS `{$table_prefix}addkit`;");
+        // $this->db->query('CREATE TABLE `'.$table_prefix.'addkit` (
+        //   `id` int(11) NOT NULL AUTO_INCREMENT,
+        //   PRIMARY KEY (`id`)
+        // )');
     }
 
     /**

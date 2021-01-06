@@ -8,14 +8,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  * @package     SainSuite
  * @copyright   Copyright (c) 2019-2020 Buddy Winangun, Eracik.
- * @copyright   Copyright (c) 2020 SainTekno, SainSuite.
+ * @copyright   Copyright (c) 2020-2021 SainTekno, SainSuite.
  * @link        https://github.com/saintekno/sainsuite
  * @filesource
  */
 
 $complete_addkit = array();
-$edit_addkit     = '';
-$hapus_addkit    = '';
+$edit_addkit     = '<i class="fas fa-pen"></i>';
+$hapus_addkit    = '<i class="fas fa-trash-alt"></i>';
 // adding addkit to complete_addkit array
 foreach (force_array($addkits) as $row) {
     if ( User::control('edit.addkit')) {

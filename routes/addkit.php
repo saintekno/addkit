@@ -8,7 +8,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  * @package     SainSuite
  * @copyright   Copyright (c) 2019-2020 Buddy Winangun, Eracik.
- * @copyright   Copyright (c) 2020 SainTekno, SainSuite.
+ * @copyright   Copyright (c) 2020-2021 SainTekno, SainSuite.
  * @link        https://github.com/saintekno/sainsuite
  * @filesource
  */
@@ -18,8 +18,10 @@ class AddKit_Controller extends MY_Addon
     {
         parent::__construct();
 
+        // Load Header menu, optional!
         $this->events->add_filter( 'header_menu', array( new AddKit_Menu, '_header_menu' ));
         
+        // Load Model
         $this->load->model('addkit_model');
     }
 
@@ -29,11 +31,12 @@ class AddKit_Controller extends MY_Addon
      */
     public function index()
     {
+        // Can user access ?
         if ( ! User::control('read.addkit') ) {
             $this->session->set_flashdata('error_message', __( 'Access denied. Your are not allowed to see this page.' ));
             redirect(site_url('admin/page404'));
-		}
-
+        }
+        
         // Toolbar
         if ( User::control('create.addkit') ) {
             $this->events->add_filter( 'toolbar_menu', function( $final ) {
@@ -65,6 +68,7 @@ class AddKit_Controller extends MY_Addon
      */
     public function add()
     {
+        // Can user access ?
         if (! User::control('create.addkit')) {
             $this->session->set_flashdata('error_message', __( 'Access denied. Your are not allowed to see this page.' ));
             redirect(site_url('admin/page404'));
@@ -80,21 +84,6 @@ class AddKit_Controller extends MY_Addon
 			);
 			return $final;
         });
-
-        // POST data
-        $this->load->library('form_validation');
-        
-        $this->form_validation->set_rules('addkit', 'AddKit', 'required');
-        if ($this->form_validation->run()) 
-        { 
-            $exec = $this->addkit_model->add();
-
-            if ($exec == 'created') {
-                redirect(array( 'admin', 'addkit?notice=' . $exec ));
-            } else {
-                $this->notice->push_notice_array($exec);
-            }
-        }
         
         // Title
         Polatan::set_title(sprintf(__('AddKit &mdash; %s', 'addkit'), get('signature')));
@@ -103,8 +92,20 @@ class AddKit_Controller extends MY_Addon
         $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
         $this->breadcrumb->add(__('AddKit', 'addkit'), site_url('admin/addkit'));
         $this->breadcrumb->add(__('Add New', 'addkit'), site_url('admin/addkit/add'));
-
         $data['breadcrumbs'] = $this->breadcrumb->render();
+        
+        // POST data
+        if ($this->input->post('submit')) 
+        {
+            $exec = $this->addkit_model->add();
+
+            if ($exec == 'created') {
+                redirect(array( 'admin', 'addkit?notice=' . $exec ));
+            } else {
+                $this->notice->push_notice_array($exec);
+            }
+        }
+
         $this->addon_view( 'addkit', 'form', $data );
     }
 
@@ -115,6 +116,7 @@ class AddKit_Controller extends MY_Addon
      */
     public function edit( $index = "" )
     {
+        // Can user access ?
         if (! User::control('edit.addkit')) {
             $this->session->set_flashdata('error_message', __( 'Access denied. Your are not allowed to see this page.' ));
             redirect(site_url('admin/page404'));
@@ -130,22 +132,6 @@ class AddKit_Controller extends MY_Addon
 			);
 			return $final;
         });
-
-        // POST data
-        $this->load->library('form_validation');
-
-        $this->form_validation->set_rules('addkit', 'AddKit', 'required');
-        if ($this->form_validation->run()) 
-        { 
-            $exec = $this->addkit_model->edit($index);
-
-            if ($exec == 'updated') {
-                $this->session->set_flashdata('flash_message', $exec);
-                redirect(current_url(), 'refresh');
-            } else {
-                $this->notice->push_notice_array($exec);
-            }
-        }
         
         // Title
 		Polatan::set_title(sprintf(__('AddKit &mdash; %s'), get('signature')));
@@ -154,8 +140,19 @@ class AddKit_Controller extends MY_Addon
         $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
         $this->breadcrumb->add(__('AddKit', 'addkit'), site_url('admin/addkit'));
         $this->breadcrumb->add(__('Edit', 'addkit'), site_url('admin/addkit/edit'));
-
         $data['breadcrumbs'] = $this->breadcrumb->render();
+        
+        // POST data
+        if ($this->input->post('submit')) 
+        {
+            $exec = $this->addkit_model->edit($index);
+
+            if ($exec == 'updated') {
+                redirect(array( 'admin', 'addkit?notice=' . $exec ));
+            } else {
+                $this->notice->push_notice_array($exec);
+            }
+        }
         $data['addkit'] = $this->addkit_model->find($index);
         $this->addon_view( 'addkit', 'form', $data );
     }
@@ -167,6 +164,7 @@ class AddKit_Controller extends MY_Addon
      */
     public function delete( $index )
     {
+        // Can user access ?
         if (! User::control('delete.addkit')) {
             $this->session->set_flashdata('error_message', __( 'Access denied. Your are not allowed to see this page.' ));
             redirect(site_url('admin/page404'));
@@ -187,6 +185,7 @@ class AddKit_Controller extends MY_Addon
 
     public function multidelete()
     {
+        // Can user access ?
         if (! User::control('delete.users')) {
             $this->session->set_flashdata('info_message', __( 'Access denied. Youre not allowed to see this page.' ));
             redirect(site_url('admin/page404'));
