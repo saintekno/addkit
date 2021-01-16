@@ -66,4 +66,19 @@ class AddKit_model extends MY_Model
         $data[ 'name' ] = $this->input->post('name');
         parent::update($where, $data);
     }
+
+    /**
+     * Delete the record with the specified primary key value.
+     *
+     * If $this->soft_deletes is true, it will attempt to set $this->deleted_field
+     * on the specified record to '1', to allow the data to remain in the database.
+     *
+     * @param mixed $id The primary_key value to match against.
+     *
+     * @return bool True on successful delete, else false.
+     */
+    public function delete($id = null)
+    {
+        parent::delete($id);
+    }
 }
