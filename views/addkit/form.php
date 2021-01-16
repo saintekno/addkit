@@ -44,7 +44,7 @@ $this->polatan->add_item(array(
     'label'    => __('Name'),
     'name'     => 'name',
     'disabled' => true,
-    'value'    => (isset($addkit)) ? $addkit->name : '',
+    'value'    => (isset($addkit_detail)) ? $addkit_detail->name : '',
 ), 'form_addkit', 1);
 
 $this->polatan->output();

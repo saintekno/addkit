@@ -56,8 +56,8 @@ class AddKit_Controller extends MY_Addon
         // BreadCrumb
         $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
         $this->breadcrumb->add(__('AddKit', 'addkit'), site_url('admin/addkit'));
-
         $data['breadcrumbs'] = $this->breadcrumb->render();
+        
         $data['addkits'] = $this->addkit_model->find_all();
         $this->addon_view( 'addkit', 'addkit/read', $data );
     }
@@ -153,7 +153,7 @@ class AddKit_Controller extends MY_Addon
                 $this->notice->push_notice_array($exec);
             }
         }
-        $data['addkit'] = $this->addkit_model->find($index);
+        $data['addkit_detail'] = $this->addkit_model->find($index);
         $this->addon_view( 'addkit', 'addkit/form', $data );
     }
 
