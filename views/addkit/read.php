@@ -13,10 +13,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * @filesource
  */
 
-$complete_addkit = array();
+$tables = array();
 $edit_addkit     = '<i class="fas fa-pen"></i>';
 $hapus_addkit    = '<i class="fas fa-trash-alt"></i>';
-// adding addkit to complete_addkit array
+// adding addkit to tables array
 foreach (force_array($addkits) as $row) {
     if ( User::control('edit.addkit')) {
         $edit_addkit = '<a href="' . site_url(array( 'admin', 'addkit', 'edit', $row->id )) . '" 
@@ -28,7 +28,7 @@ foreach (force_array($addkits) as $row) {
                 data-url=\'' . site_url(array( 'admin', 'addkit', 'delete', $row->id )) . '\'
                 onclick="deleteConfirmation(this)"><i class="fas fa-trash-alt"></i></button>';
     }
-    $complete_addkit[] = array(
+    $tables[] = array(
         $row->id,
         $edit_addkit.' '.$hapus_addkit
     );
@@ -57,13 +57,13 @@ $this->polatan->add_item(array(
         __('Checkall'), 
         __('Actions') 
     ),
-    'tbody' => $complete_addkit
+    'tbody' => $tables
 ), 'addkit', 1);
 
 /**
  * Script
  */
-if (count($complete_addkit) > 0) :
+if (count($tables) > 0) :
 $this->events->add_action( 'dashboard_footer', function() {
     $this->load->addon_view( 'addkit', 'addkit/script');
 });

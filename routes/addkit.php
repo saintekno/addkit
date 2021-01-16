@@ -97,10 +97,10 @@ class AddKit_Controller extends MY_Addon
         // POST data
         if ($this->input->post('submit')) 
         {
-            $exec = $this->addkit_model->add();
+            $exec = $this->addkit_model->insert();
 
-            if ($exec == 'created') {
-                redirect(array( 'admin', 'addkit?notice=' . $exec ));
+            if ($exec) {
+                redirect(array( 'admin', 'addkit?notice=created' ));
             } else {
                 $this->notice->push_notice_array($exec);
             }
@@ -145,10 +145,10 @@ class AddKit_Controller extends MY_Addon
         // POST data
         if ($this->input->post('submit')) 
         {
-            $exec = $this->addkit_model->edit($index);
+            $exec = $this->addkit_model->update($index);
 
-            if ($exec == 'updated') {
-                redirect(array( 'admin', 'addkit?notice=' . $exec ));
+            if ($exec) {
+                redirect(array( 'admin', 'addkit?notice=updated' ));
             } else {
                 $this->notice->push_notice_array($exec);
             }
