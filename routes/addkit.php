@@ -59,7 +59,7 @@ class AddKit_Controller extends MY_Addon
 
         $data['breadcrumbs'] = $this->breadcrumb->render();
         $data['addkits'] = $this->addkit_model->find_all();
-        $this->addon_view( 'addkit', 'read', $data );
+        $this->addon_view( 'addkit', 'addkit/read', $data );
     }
 
     /**
@@ -106,7 +106,7 @@ class AddKit_Controller extends MY_Addon
             }
         }
 
-        $this->addon_view( 'addkit', 'form', $data );
+        $this->addon_view( 'addkit', 'addkit/form', $data );
     }
 
     /**
@@ -154,7 +154,7 @@ class AddKit_Controller extends MY_Addon
             }
         }
         $data['addkit'] = $this->addkit_model->find($index);
-        $this->addon_view( 'addkit', 'form', $data );
+        $this->addon_view( 'addkit', 'addkit/form', $data );
     }
 
     /**
