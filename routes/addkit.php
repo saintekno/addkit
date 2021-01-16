@@ -19,7 +19,7 @@ class AddKit_Controller extends MY_Addon
         parent::__construct();
 
         // Load Header menu, optional!
-        $this->events->add_filter( 'header_menu', array( new AddKit_Menu, '_header_menu' ));
+        // $this->events->add_filter( 'header_menu', array( new AddKit_Menu, '_header_menu' ));
         
         // Load Model
         $this->load->model('addkit_model');
@@ -162,7 +162,7 @@ class AddKit_Controller extends MY_Addon
      * @param int addkit id
      * @return redirect
      */
-    public function delete( $index )
+    public function delete( $index = null )
     {
         // Can user access ?
         if (! User::control('delete.addkit')) {
@@ -170,34 +170,24 @@ class AddKit_Controller extends MY_Addon
             redirect(site_url('admin/page404'));
         }
 
-        if ($this->addkit_model->delete($index)) {
-            redirect(array( 'admin', 'addkit?notice=deleted' ));
-        } else {
-            $this->session->set_flashdata('flash_message', __('unexpected-error'));
-            redirect(current_url(), 'refresh');
-        };
-    }
-
-    /**
-     * Delete user
-     * @return redirect
-     */
-
-    public function multidelete()
-    {
-        // Can user access ?
-        if (! User::control('delete.users')) {
-            $this->session->set_flashdata('info_message', __( 'Access denied. Youre not allowed to see this page.' ));
-            redirect(site_url('admin/page404'));
+        if ( $index == null ) 
+        {
+            $ids = $this->input->post('ids');
+    
+            foreach($ids as $id){
+                $this->addkit_model->delete($id);
+            }
+    
+            echo 1;
+            exit;
         }
-
-        $ids = $this->input->post('ids');
-
-        foreach($ids as $id){
-            $this->addkit_model->delete($id);
+        else {
+            if ($this->addkit_model->delete($index)) {
+                redirect(array( 'admin', 'addkit?notice=deleted' ));
+            } else {
+                $this->session->set_flashdata('flash_message', __('unexpected-error'));
+                redirect(current_url(), 'refresh');
+            };
         }
-
-        echo 1;
-        exit;
     }
 }
