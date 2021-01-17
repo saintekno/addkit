@@ -7,26 +7,26 @@ var SainScript = function() {
                 input: $('#search_query'),
                 key: 'generalSearch'
             },
-            columns: [{
-                field: 'Checkall',
-                title: '#',
-                sortable: false,
-                width: 20,
-                type: 'number',
-                selector: {
-                    class: ''
+            columns: [
+                {
+					field: 'Checkall',
+                    title: '#',
+                    sortable: false,
+                    width: 20,
+                    type: 'number',
+					textAlign: 'center',
+					selector: {class: 'kt-checkbox--solid'},
                 },
-                textAlign: 'center',
-            },
-            {
-                field: 'Actions',
-                title: 'Actions',
-                sortable: false,
-                overflow: 'visible',
-                textAlign: 'right',
-                autoHide: false,
-                width:70,
-            }]
+                {
+                    field: 'Actions',
+                    title: 'Actions',
+                    sortable: false,
+                    overflow: 'visible',
+                    textAlign: 'right',
+                    autoHide: false,
+                    width:70,
+                }
+            ]
         });
         
         datatable.on(
