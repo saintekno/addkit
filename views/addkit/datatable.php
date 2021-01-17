@@ -2,7 +2,10 @@
 var DatatableScript = function() {   
     // Read
     var read = function() {
-		var dataSet = JSON.parse('<?php echo $addkit;?>');
+        var dataSet;
+		if ('<?php echo $addkit;?>' !== '') {
+            dataSet = JSON.parse('<?php echo $addkit;?>');
+        }
         var datatable = $('#kt_datatable').KTDatatable({
 			data: {
 				type: 'local',
