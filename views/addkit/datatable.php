@@ -42,7 +42,7 @@ var DatatableScript = function() {
                         <?php if ( User::control('edit.addkit')) : ?>
 						edit = '\
                             <a class="btn btn-sm btn-icon btn-light-primary btn-hover-primary "\
-                                href="<?php echo site_url(array( 'admin', 'addkit', 'delete'));?>/'+ row.id +'">\
+                                href="<?php echo site_url(array( 'admin', 'addkit', 'edit'));?>/'+ row.id +'">\
                                 <i class="fas fa-pen"></i>\
                             </a>\
                         ';
