@@ -170,6 +170,7 @@ class AddKit_Controller extends MY_Addon
             redirect(site_url('admin/page404'));
         }
 
+        // Multiple delete
         if ( $index == null ) 
         {
             $ids = $this->input->post('ids');

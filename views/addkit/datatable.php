@@ -34,6 +34,7 @@ var DatatableScript = function() {
 					title: 'Actions',
                     textAlign: 'right',
 					sortable: false,
+                    autoHide: false,
 					overflow: 'visible',
 					template: function(row) {
                         var edit  = '<i class="fas fa-pen"></i>';
