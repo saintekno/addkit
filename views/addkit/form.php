@@ -16,7 +16,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 /**
  * Col Width
  */
-$this->polatan->col_width(1, 2);
+$this->polatan->add_col(array(
+    'width' => 2,
+), 1);
 
 /**
  * Meta
@@ -30,7 +32,7 @@ $this->polatan->add_meta(array(
     ),
     'footer' => array(
         'submit' => array(
-            'label' => __('Submit AddKit', 'addkit')
+            'label' => __('Submit', 'addkit')
         )
     ),
     'type' => 'card'
@@ -41,10 +43,13 @@ $this->polatan->add_meta(array(
  */
 $this->polatan->add_item(array(
     'type'     => 'text',
-    'label'    => __('Name'),
+    'label'    => __('Title'),
     'name'     => 'name',
-    'disabled' => true,
+    'required' => true,
     'value'    => (isset($addkit_detail)) ? $addkit_detail->name : '',
 ), 'form_addkit', 1);
 
+/**
+ * Output
+ */
 $this->polatan->output();

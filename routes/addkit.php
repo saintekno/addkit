@@ -58,7 +58,7 @@ class AddKit_Controller extends MY_Addon
         $this->breadcrumb->add(__('AddKit', 'addkit'), site_url('admin/addkit'));
         $data['breadcrumbs'] = $this->breadcrumb->render();
         
-        $data['addkits'] = $this->addkit_model->find_all();
+        $data['addkits'] = $this->addkit_model->as_json()->find_all();
         $this->addon_view( 'addkit', 'addkit/read', $data );
     }
 
