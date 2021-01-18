@@ -49,7 +49,7 @@ class AddKit_model extends MY_Model
     public function insert($data = null)
     {
         $data[ 'name' ] = $this->input->post('name');
-        parent::insert($data);
+        return parent::insert($data);
     }
 
     /**
@@ -64,7 +64,7 @@ class AddKit_model extends MY_Model
     public function update($where = null, $data = null)
     {
         $data[ 'name' ] = $this->input->post('name');
-        parent::update($where, $data);
+        return parent::update($where, $data);
     }
 
     /**
@@ -79,6 +79,6 @@ class AddKit_model extends MY_Model
      */
     public function delete($id = null)
     {
-        parent::delete($id);
+        return parent::delete($id);
     }
 }
