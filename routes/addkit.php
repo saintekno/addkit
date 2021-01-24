@@ -20,9 +20,6 @@ class AddKit_Controller extends MY_Addon
 
         // Load Header menu, optional!
         // $this->events->add_filter( 'header_menu', array( new AddKit_Menu, '_header_menu' ));
-        
-        // Load Model
-        $this->load->model('addkit_model');
     }
 
     /**
@@ -30,12 +27,15 @@ class AddKit_Controller extends MY_Addon
      * @return void
      */
     public function index()
-    {
+    {        
         // Can user access ?
         if ( ! User::control('read.addkit') ) {
             $this->session->set_flashdata('error_message', __( 'Access denied. Your are not allowed to see this page.' ));
             redirect(site_url('admin/page404'));
         }
+
+        // Load Model
+        $this->load->model('addkit_model');
         
         // Toolbar
         if ( User::control('create.addkit') ) {
@@ -73,6 +73,9 @@ class AddKit_Controller extends MY_Addon
             $this->session->set_flashdata('error_message', __( 'Access denied. Your are not allowed to see this page.' ));
             redirect(site_url('admin/page404'));
         }
+
+        // Load Model
+        $this->load->model('addkit_model');
 
         // Toolbar
         $this->events->add_filter( 'toolbar_menu', function( $final ) {
@@ -122,6 +125,9 @@ class AddKit_Controller extends MY_Addon
             redirect(site_url('admin/page404'));
         }
 
+        // Load Model
+        $this->load->model('addkit_model');
+
         // Toolbar
         $this->events->add_filter( 'toolbar_menu', function( $final ) {
 			$final[] = array(
@@ -169,6 +175,9 @@ class AddKit_Controller extends MY_Addon
             $this->session->set_flashdata('error_message', __( 'Access denied. Your are not allowed to see this page.' ));
             redirect(site_url('admin/page404'));
         }
+        
+        // Load Model
+        $this->load->model('addkit_model');
 
         // Multiple delete
         if ( $index == null ) 
