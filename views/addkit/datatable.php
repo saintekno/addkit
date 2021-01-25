@@ -59,7 +59,7 @@ var DatatableScript = function() {
                         ';
                         <?php endif; ?>
 
-                        return edit +' '+hapus;
+                        return '<div class="btn-group">'+ edit +' '+ hapus +'</div>';
 					},
 				}
             ],
