@@ -2,8 +2,9 @@
 var DatatableScript = function() {   
     // Read
     var read = function() {
+        var array = <?php echo $addkit;?>;
         var dataSet;
-		if ('<?php echo $addkit;?>' !== '') {
+        if (Object.keys(array).length) {
             dataSet = JSON.parse('<?php echo $addkit;?>');
         }
         var datatable = $('#kt_datatable').KTDatatable({
@@ -37,8 +38,8 @@ var DatatableScript = function() {
                     autoHide: false,
 					overflow: 'visible',
 					template: function(row) {
-                        var edit  = '<i class="fas fa-pen"></i>';
-                        var hapus = '<i class="fas fa-trash-alt"></i>';
+                        var edit  = '<button class="btn btn-light" disabled><i class="fas fa-pen"></i></button>';
+                        var hapus = '<button class="btn btn-sm btn-icon btn-light" disabled><i class="fas fa-trash-alt"></i></button>';
                         <?php if ( User::control('edit.addkit')) : ?>
 						edit = '\
                             <a class="btn btn-sm btn-icon btn-light-primary btn-hover-primary "\

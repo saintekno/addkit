@@ -22,7 +22,7 @@ $this->polatan->add_meta(array(
 
 $this->polatan->add_item(array(
     'type' => 'table-datatable',
-    'data' => $addkit
+    'data' => json_decode($addkit)
 ), 'addkit', 1);
 
 /**
