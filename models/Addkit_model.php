@@ -16,8 +16,6 @@ class AddKit_model extends MY_Model
 {
     protected $table_name = 'addkit';
 
-    protected $return_insert_id = false;
-
     protected $date_format = 'datetime';
 
     protected $validation_rules = array(
