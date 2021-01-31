@@ -51,7 +51,7 @@ class AddKit_Controller extends MY_Addon
         };
         
         // Title
-		Polatan::set_title(sprintf(__(ucfirst('AddKit').' &mdash; %s', 'addkit'), get('signature')));
+		Polatan::set_title(sprintf(__(humanize('AddKit').' &mdash; %s', 'addkit'), get('signature')));
         
         // BreadCrumb
         $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
@@ -89,7 +89,7 @@ class AddKit_Controller extends MY_Addon
         });
         
         // Title
-        Polatan::set_title(sprintf(__(ucfirst('AddKit').' &mdash; %s', 'addkit'), get('signature')));
+        Polatan::set_title(sprintf(__(humanize('AddKit').' &mdash; %s', 'addkit'), get('signature')));
         
         // BreadCrumb
         $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
@@ -140,7 +140,7 @@ class AddKit_Controller extends MY_Addon
         });
         
         // Title
-		Polatan::set_title(sprintf(__(ucfirst('AddKit').' &mdash; %s'), get('signature')));
+		Polatan::set_title(sprintf(__(humanize('AddKit').' &mdash; %s'), get('signature')));
         
         // BreadCrumb
         $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));

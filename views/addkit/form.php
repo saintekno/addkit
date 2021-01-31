@@ -26,16 +26,16 @@ $this->polatan->add_col(array(
 $this->polatan->add_meta(array(
     'col_id'    => 1,
     'namespace' => 'form_addkit',
+    'type'      => 'card',
     'gui_saver' => false,
     'form'      => array(
         'action' => null,
     ),
     'footer' => array(
         'submit' => array(
-            'label' => __('Submit', 'addkit')
+            'label' => __(ucfirst($this->uri->segment(3))).' addkit'
         )
-    ),
-    'type' => 'card'
+    )
 ));
 
 /**
