@@ -33,7 +33,7 @@ $this->polatan->add_meta(array(
     ),
     'footer' => array(
         'submit' => array(
-            'label' => __(ucfirst($this->uri->segment(3))).' addkit'
+            'label' => __((in_array('add', $this->uri->segment_array())) ? 'Create addkit' : 'Save change')
         )
     )
 ));
