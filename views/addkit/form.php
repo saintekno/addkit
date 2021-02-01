@@ -46,7 +46,9 @@ $this->polatan->add_item(array(
     'label'    => __('Title'),
     'name'     => 'name',
     'required' => true,
-    'value'    => (isset($addkit_detail)) ? $addkit_detail->name : '',
+    'value'    => (isset($addkit_detail)) 
+        ? set_value('name', $addkit_detail->name)
+        : set_value('name'),
 ), 'form_addkit', 1);
 
 /**
