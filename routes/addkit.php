@@ -34,6 +34,17 @@ class AddKit_Controller extends MY_Addon
             redirect(site_url('admin/page404'));
         }
         
+        // Load Model
+        $this->load->model('addkit_model');
+        
+        // Title
+		Polatan::set_title(sprintf(__(humanize('AddKit').' &mdash; %s', 'addkit'), get('signature')));
+
+        // BreadCrumb
+        $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
+        $this->breadcrumb->add(__('AddKit', 'addkit'), site_url('admin/addkit'));
+        $data['breadcrumbs'] = $this->breadcrumb->render();
+        
         // Toolbar
         if ( User::control('create.addkit') ) {
             $this->events->add_filter( 'toolbar_menu', function( $final ) {
@@ -46,17 +57,6 @@ class AddKit_Controller extends MY_Addon
                 return $final;
             });
         };
-        
-        // BreadCrumb
-        $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
-        $this->breadcrumb->add(__('AddKit', 'addkit'), site_url('admin/addkit'));
-        $data['breadcrumbs'] = $this->breadcrumb->render();
-        
-        // Title
-		Polatan::set_title(sprintf(__(humanize('AddKit').' &mdash; %s', 'addkit'), get('signature')));
-        
-        // Load Model
-        $this->load->model('addkit_model');
 
         $data['addkits'] = $this->addkit_model->as_json()->find_all();
         $this->addon_view( 'addkit', 'addkit/read', $data );
@@ -74,6 +74,18 @@ class AddKit_Controller extends MY_Addon
             redirect(site_url('admin/page404'));
         }
 
+        // Load Model
+        $this->load->model('addkit_model');
+        
+        // Title
+        Polatan::set_title(sprintf(__(humanize('AddKit').' &mdash; %s', 'addkit'), get('signature')));
+        
+        // BreadCrumb
+        $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
+        $this->breadcrumb->add(__('AddKit', 'addkit'), site_url('admin/addkit'));
+        $this->breadcrumb->add(__('Add New', 'addkit'), site_url('admin/addkit/add'));
+        $data['breadcrumbs'] = $this->breadcrumb->render();
+        
         // Toolbar
         $this->events->add_filter( 'toolbar_menu', function( $final ) {
 			$final[] = array(
@@ -84,18 +96,6 @@ class AddKit_Controller extends MY_Addon
 			);
 			return $final;
         });
-        
-        // BreadCrumb
-        $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
-        $this->breadcrumb->add(__('AddKit', 'addkit'), site_url('admin/addkit'));
-        $this->breadcrumb->add(__('Add New', 'addkit'), site_url('admin/addkit/add'));
-        $data['breadcrumbs'] = $this->breadcrumb->render();
-        
-        // Title
-        Polatan::set_title(sprintf(__(humanize('AddKit').' &mdash; %s', 'addkit'), get('signature')));
-        
-        // Load Model
-        $this->load->model('addkit_model');
 
         // POST data
         if ($this->input->post('submit')) 
@@ -125,6 +125,18 @@ class AddKit_Controller extends MY_Addon
             redirect(site_url('admin/page404'));
         }
 
+        // Load Model
+        $this->load->model('addkit_model');
+        
+        // Title
+		Polatan::set_title(sprintf(__(humanize('AddKit').' &mdash; %s'), get('signature')));
+        
+        // BreadCrumb
+        $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
+        $this->breadcrumb->add(__('AddKit', 'addkit'), site_url('admin/addkit'));
+        $this->breadcrumb->add(__('Edit', 'addkit'), site_url('admin/addkit/edit'));
+        $data['breadcrumbs'] = $this->breadcrumb->render();
+
         // Toolbar
         $this->events->add_filter( 'toolbar_menu', function( $final ) {
 			$final[] = array(
@@ -135,18 +147,6 @@ class AddKit_Controller extends MY_Addon
 			);
 			return $final;
         });
-        
-        // BreadCrumb
-        $this->breadcrumb->add(__('Home', 'addkit'), site_url('admin'));
-        $this->breadcrumb->add(__('AddKit', 'addkit'), site_url('admin/addkit'));
-        $this->breadcrumb->add(__('Edit', 'addkit'), site_url('admin/addkit/edit'));
-        $data['breadcrumbs'] = $this->breadcrumb->render();
-        
-        // Title
-		Polatan::set_title(sprintf(__(humanize('AddKit').' &mdash; %s'), get('signature')));
-
-        // Load Model
-        $this->load->model('addkit_model');
         
         // POST data
         if ($this->input->post('submit')) 
