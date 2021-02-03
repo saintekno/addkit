@@ -195,11 +195,12 @@ class AddKit_Controller extends MY_Addon
             $exec = $this->addkit_model->delete($index);
 
             if ($exec) {
-                redirect(array( 'admin', 'addkit?notice=deleted' ));
+                $this->session->set_flashdata('flash_message', __('deleted'));
             } else {
                 $this->session->set_flashdata('flash_message', __('unexpected-error'));
-                redirect(current_url(), 'refresh');
             };
+            
+            redirect(current_url(), 'refresh');
         }
     }
 }
