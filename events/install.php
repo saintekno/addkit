@@ -66,16 +66,16 @@ class AddKit_Install extends CI_model
         $this->options_model->set('addkit_installed', true, 'addkit');
 
         // Addkit Permissions
-        $this->aauth->create_perm('read.addkit', 'Read addkit');
-        $this->aauth->create_perm('create.addkit', 'Create addkit');
-        $this->aauth->create_perm('edit.addkit', 'Edit addkit');
-        $this->aauth->create_perm('delete.addkit', 'Delete addkit');
+        // $this->aauth->create_perm('read.addkit', 'Read addkit');
+        // $this->aauth->create_perm('create.addkit', 'Create addkit');
+        // $this->aauth->create_perm('edit.addkit', 'Edit addkit');
+        // $this->aauth->create_perm('delete.addkit', 'Delete addkit');
 
         // Assign Permission Addkit to Groups
-        $this->aauth->allow_group('member', 'read.addkit');
-        $this->aauth->allow_group('member', 'create.addkit');
-        $this->aauth->allow_group('member', 'update.addkit');
-        $this->aauth->allow_group('member', 'delete.addkit');
+        // $this->aauth->allow_group('member', 'read.addkit');
+        // $this->aauth->allow_group('member', 'create.addkit');
+        // $this->aauth->allow_group('member', 'update.addkit');
+        // $this->aauth->allow_group('member', 'delete.addkit');
     }
 
     /**
@@ -89,13 +89,13 @@ class AddKit_Install extends CI_model
         endif;
         
         // Delete Table
-        $this->db->query('DROP TABLE IF EXISTS `'.$this->db->dbprefix.'addkit`;');
+        // $this->db->query('DROP TABLE IF EXISTS `'.$this->db->dbprefix.'addkit`;');
         
         // Delete Permissions
-        $this->aauth->delete_perm('read.addkit');
-        $this->aauth->delete_perm('create.addkit');
-        $this->aauth->delete_perm('edit.addkit');
-        $this->aauth->delete_perm('delete.addkit');
+        // $this->aauth->delete_perm('read.addkit');
+        // $this->aauth->delete_perm('create.addkit');
+        // $this->aauth->delete_perm('edit.addkit');
+        // $this->aauth->delete_perm('delete.addkit');
     }
 }
 new AddKit_Install;
