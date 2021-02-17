@@ -12,6 +12,22 @@
  * @filesource
  */
 
+// Toolbar
+$this->events->add_filter( 'toolbar', function( $toolbar ) {
+    if ( User::control('create.addkit') ) {
+        $toolbar[] = array(
+            'id' => 1,
+            'parent'  => NULL,
+            'name'   => __('Add A AddKit', 'addkit'),
+            'icon'    => 'icon ni ni-reports',
+            'color'  => 'btn-light-primary',
+            'slug'    => [ 'admin', 'addkit', 'add' ]
+        );
+    };
+
+    return $toolbar;
+});
+
 $this->polatan->col_width(1, 4);
 
 $this->polatan->add_meta(array(

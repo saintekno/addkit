@@ -13,6 +13,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * @filesource
  */
 
+// Toolbar
+$this->events->add_filter( 'toolbar', function( $toolbar ) {
+    $toolbar[] = array(
+        'id' => 1,
+        'parent'  => NULL,
+        'name'   => __('Back to the list', 'addkit'),
+        'icon'    => 'icon ni ni-reports',
+        'color'  => 'btn-light-primary',
+        'slug'    => [ 'admin', 'addkit' ]
+    );
+
+    return $toolbar;
+});
+
 /**
  * Col Width
  */
