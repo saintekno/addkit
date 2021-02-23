@@ -22,6 +22,7 @@ class AddKit_Install extends CI_model
         $this->events->add_action('do_enable_addon', [ $this, 'enable_addon' ] );
         $this->events->add_action('do_remove_addon', [ $this, 'remove_addon' ] );
         $this->events->add_action('settings_tables', [ $this, 'install_tables' ] );
+        $this->events->add_action('settings_final_config', [ $this, 'permissions' ] );
         $this->events->add_action('settings_final_config', [ $this, 'final_config' ] );
     }
     
@@ -35,6 +36,8 @@ class AddKit_Install extends CI_model
         if ($namespace === 'addkit' && $this->options_model->get('addkit_installed') == null) {
             // Install Tables
             $this->install_tables();
+            $this->permissions();
+            $this->dummy_tables();
             $this->final_config();
         }
     }
@@ -56,15 +59,27 @@ class AddKit_Install extends CI_model
     }
 
     /**
-     * Final Config
+     * Install tables
      *
      * @return void
     **/
-    public function final_config()
+    public function dummy_tables()
     {
-        // Defaut options_model
-        $this->options_model->set('addkit_installed', true, 'addkit');
-
+        $table_prefix =	$this->db->dbprefix;
+        
+        // addkit
+        // $this->db->query("INSERT INTO `{$table_prefix}addkit` (`id`) VALUES
+        //     ('FO0009');" 
+        // );
+    }
+    
+    /**
+     * Set groupes
+     *
+     * @return void
+    **/
+    public function permissions()
+    {
         // Addkit Permissions
         // $this->aauth->create_perm('read.addkit', 'Read addkit');
         // $this->aauth->create_perm('create.addkit', 'Create addkit');
@@ -76,6 +91,17 @@ class AddKit_Install extends CI_model
         // $this->aauth->allow_group('member', 'create.addkit');
         // $this->aauth->allow_group('member', 'update.addkit');
         // $this->aauth->allow_group('member', 'delete.addkit');
+    }
+
+    /**
+     * Final Config
+     *
+     * @return void
+    **/
+    public function final_config()
+    {
+        // Defaut options_model
+        $this->options_model->set('addkit_installed', true, 'addkit');
     }
 
     /**
