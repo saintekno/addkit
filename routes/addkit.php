@@ -14,10 +14,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  */
 class AddKit_Controller extends MY_Addon
 {
-    private $breadcrumb = array(
-        array( 'name' => __('Home', 'addkit'), 'slug' => site_url('admin') ),
-        array( 'name' => __('AddKit', 'addkit'), 'slug' => site_url('admin/addkit') )
-    );
+    private $breadcrumbs = array();
 
     public function __construct()
     {
@@ -25,6 +22,16 @@ class AddKit_Controller extends MY_Addon
 
         // Load Header menu, optional!
         // $this->events->add_filter( 'header_menu', array( new AddKit_Menu, '_header_menu' ));
+    }
+
+    private function breadcrumb($array)
+    {
+        $this->breadcrumbs = array_merge(
+            array( 'name' => __('Home', 'addkit'), 'slug' => site_url('admin') ),
+            array( 'name' => __('AddKit', 'addkit'), 'slug' => site_url('admin/addkit') ), 
+            $array
+        );
+       return $this->breadcrumbs;
     }
 
     /**
@@ -43,10 +50,10 @@ class AddKit_Controller extends MY_Addon
         $this->load->model('addkit_model');
         
         // Title
-		Polatan::set_title(sprintf(__(humanize('AddKit').' &mdash; %s', 'addkit'), get('signature')));
+		Polatan::set_title(sprintf(__('AddKit'.' &mdash; %s', 'addkit'), get('signature')));
 
         // BreadCrumb
-        $data['breadcrumbs'] = $this->breadcrumb;
+        $data['breadcrumbs'] = $this->breadcrumb([]);
 
         $data['addkits'] = $this->addkit_model->as_json()->find_all();
         $this->addon_view( 'addkit', 'addkit/read', $data );
@@ -68,11 +75,12 @@ class AddKit_Controller extends MY_Addon
         $this->load->model('addkit_model');
         
         // Title
-        Polatan::set_title(sprintf(__(humanize('AddKit').' &mdash; %s', 'addkit'), get('signature')));
+        Polatan::set_title(sprintf(__('AddKit'.' &mdash; %s', 'addkit'), get('signature')));
         
         // BreadCrumb
-        $this->breadcrumb[] = array( 'name' => __('Add New', 'addkit'), 'slug' => '#' );
-        $data['breadcrumbs'] = $this->breadcrumb;
+        $data['breadcrumbs'] = $this->breadcrumb(
+            array( 'name' => __('Add New', 'addkit'), 'slug' => '#' )
+        );
 
         // POST data
         if ($this->input->post('submit')) 
@@ -106,11 +114,12 @@ class AddKit_Controller extends MY_Addon
         $this->load->model('addkit_model');
         
         // Title
-		Polatan::set_title(sprintf(__(humanize('AddKit').' &mdash; %s'), get('signature')));
+		Polatan::set_title(sprintf(__('AddKit'.' &mdash; %s'), get('signature')));
         
         // BreadCrumb
-        $this->breadcrumb[] = array( 'name' => __('Edit', 'addkit'), 'slug' => '#' );
-        $data['breadcrumbs'] = $this->breadcrumb;
+        $data['breadcrumbs'] = $this->breadcrumb(
+            array( 'name' => __('Edit', 'addkit'), 'slug' => '#' )
+        );
         
         // POST data
         if ($this->input->post('submit')) 
