@@ -52,10 +52,13 @@ class AddKit_Install extends CI_model
         $table_prefix =	$this->db->dbprefix;
 
         // $this->db->query("DROP TABLE IF EXISTS `{$table_prefix}addkit`;");
-        // $this->db->query('CREATE TABLE `'.$table_prefix.'addkit` (
-        //   `id` int(11) NOT NULL AUTO_INCREMENT,
-        //   PRIMARY KEY (`id`)
-        // )');
+        // $this->db->query("CREATE TABLE `{$table_prefix}addkit` (
+        //     `id` int(11) NOT NULL AUTO_INCREMENT,
+        //     `name` varchar(255) DEFAULT NULL,
+        //     `created_on` datetime NOT NULL,
+        //     `modified_on` datetime NOT NULL,
+        //     PRIMARY KEY (`id`)
+        // )");
     }
 
     /**
@@ -68,8 +71,8 @@ class AddKit_Install extends CI_model
         $table_prefix =	$this->db->dbprefix;
         
         // addkit
-        // $this->db->query("INSERT INTO `{$table_prefix}addkit` (`id`) VALUES
-        //     ('FO0009');" 
+        // $this->db->query("INSERT INTO `{$table_prefix}addkit` (`name`) VALUES
+        //     ('name');" 
         // );
     }
     
@@ -113,9 +116,11 @@ class AddKit_Install extends CI_model
     {
         if ($namespace != 'addkit') : return ;
         endif;
+
+        $table_prefix =	$this->db->dbprefix;
         
         // Delete Table
-        // $this->db->query('DROP TABLE IF EXISTS `'.$this->db->dbprefix.'addkit`;');
+        // $this->db->query("DROP TABLE IF EXISTS `{$table_prefix}addkit`;');
         
         // Delete Permissions
         // $this->aauth->delete_perm('read.addkit');
