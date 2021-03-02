@@ -2,9 +2,12 @@
     "application": {
         "name": "AddKit",
         "namespace": "addkit",
-        "version": "3.1",
+        "version": "3.12",
         "author": "saintekno",
+        "author uri": "http://saintekno.id",
+        "email": "sainteknoid@gmail.com",
         "description": "AddKit by SainTekno",
+        "updated": "00.00.0000",
         "main": "main.php",
         "language": "language",
         "readonly": false
