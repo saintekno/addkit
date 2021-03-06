@@ -53,7 +53,7 @@ class AddKit_Controller extends MY_Addon
 		Polatan::set_title(sprintf(__('AddKit'.' &mdash; %s', 'addkit'), get('signature')));
 
         // BreadCrumb
-        $data['breadcrumbs'] = $this->breadcrumb([]);
+        $data['breadcrumbs'] = $this->breadcrumb();
 
         $data['addkits'] = $this->addkit_model->as_json()->find_all();
         $this->addon_view( 'addkit', 'addkit/read', $data );
