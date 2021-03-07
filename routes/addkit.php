@@ -24,14 +24,20 @@ class AddKit_Controller extends MY_Addon
         // $this->events->add_filter( 'header_menu', array( new AddKit_Menu, '_header_menu' ));
     }
 
-    private function breadcrumb($array)
+    private function breadcrumb($array = array())
     {
-        $this->breadcrumbs = array_merge(
-            array( 'name' => __('Home', 'addkit'), 'slug' => site_url('admin') ),
-            array( 'name' => __('AddKit', 'addkit'), 'slug' => site_url('admin/addkit') ), 
-            $array
+        $this->breadcrumbs[] = array(
+            'id' => 1,
+            'name' => __('Home', 'addkit'), 
+            'slug' => site_url('admin')
         );
-       return $this->breadcrumbs;
+        $this->breadcrumbs[] = array(
+            'id' => 2,
+            'name' => __('AddKit', 'addkit'), 
+            'slug' => site_url('admin/addkit')
+        );
+        ($array) ? $this->breadcrumbs[] = $array : '';
+        return $this->breadcrumbs;
     }
 
     /**
@@ -79,7 +85,10 @@ class AddKit_Controller extends MY_Addon
         
         // BreadCrumb
         $data['breadcrumbs'] = $this->breadcrumb(
-            array( 'name' => __('Add New', 'addkit'), 'slug' => '#' )
+            array( 
+                'id' => 3,
+                'name' => __('Add New', 'addkit'), 
+                'slug' => site_url('admin') )
         );
 
         // POST data
@@ -118,7 +127,10 @@ class AddKit_Controller extends MY_Addon
         
         // BreadCrumb
         $data['breadcrumbs'] = $this->breadcrumb(
-            array( 'name' => __('Edit', 'addkit'), 'slug' => '#' )
+            array( 
+                'id' => 3,
+                'name' => __('Edit', 'addkit'), 
+                'slug' => site_url('admin') )
         );
         
         // POST data
