@@ -17,15 +17,35 @@ class AddKit_Menu extends CI_model
     public function __construct()
     {
 		parent::__construct();
+        $this->events->add_filter( 'menu_nav', array( $this, 'menu_nav' ));
     }
 
 	public function _header_menu($menu) {
         $menu[] = array(
+            'id' => 4,
             'title' => __('List'),
-            'href' => site_url([ 'admin', 'addkit' ]),
+            'slug' => [ 'admin', 'addkit' ],
             'icon' => 'la la-list',
+            'permission' => 'read.addkit',
+            'order' => 4
         );
         return $menu;
+	}
+
+    /**
+     * Load Dashboard Menu
+     * [New Permission Ready]
+    **/
+	public function menu_nav($menu) {
+		$final[] = array(
+			'id' => 1,
+			'name' => __('Admin Web'),
+			'icon' => 'fas fa-globe',
+			'slug' => [ 'admin', 'website' ],
+            'permission' => 'read.addkit',
+            'order' => 4
+		);
+        return $final;
 	}
 }
 new AddKit_Menu;

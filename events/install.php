@@ -120,7 +120,7 @@ class AddKit_Install extends CI_model
         $table_prefix =	$this->db->dbprefix;
         
         // Delete Table
-        // $this->db->query("DROP TABLE IF EXISTS `{$table_prefix}addkit`;');
+        // $this->db->query("DROP TABLE IF EXISTS `{$table_prefix}addkit`;");
         
         // Delete Permissions
         // $this->aauth->delete_perm('read.addkit');

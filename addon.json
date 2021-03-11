@@ -2,7 +2,7 @@
     "application": {
         "name": "AddKit",
         "namespace": "addkit",
-        "version": "3.12",
+        "version": "3.13.0",
         "author": "saintekno",
         "author uri": "http://saintekno.id",
         "email": "sainteknoid@gmail.com",
