@@ -39,7 +39,7 @@ class AddKit_Menu extends CI_model
 	public function menu_nav($menu) {
 		$final[] = array(
 			'id' => 1,
-			'name' => __('Admin Web'),
+			'name' => __('Addkit'),
 			'icon' => 'fas fa-globe',
 			'slug' => [ 'admin', 'addkit' ],
             'permission' => 'read.addkit',
