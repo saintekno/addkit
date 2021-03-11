@@ -41,7 +41,7 @@ class AddKit_Menu extends CI_model
 			'id' => 1,
 			'name' => __('Admin Web'),
 			'icon' => 'fas fa-globe',
-			'slug' => [ 'admin', 'website' ],
+			'slug' => [ 'admin', 'addkit' ],
             'permission' => 'read.addkit',
             'order' => 4
 		);
