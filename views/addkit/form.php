@@ -14,31 +14,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
  */
 
 // Toolbar
-$this->events->add_filter( 'toolbar', function( $toolbar ) {
-    $toolbar[] = array(
+$this->events->add_filter( 'toolbar_nav', function( $final ) {
+    $final[] = array(
         'id' => 1,
-        'parent'  => NULL,
-        'name'   => __('Back to the list', 'addkit'),
-        'icon'    => 'icon ni ni-reports',
-        'color'  => 'btn-light-primary',
-        'slug'    => [ 'admin', 'addkit' ]
+        'name'   => __('Back to the list'),
+        'icon'    => 'ki ki-long-arrow-back',
+        'attr_anchor'  => 'class="btn btn-light btn-sm font-weight-bolder"',
+        'slug'    => [ 'admin', 'addkit' ],
+        'permission' => 'create.addkit'
     );
-
-    return $toolbar;
+    return $final;
 });
-
-/**
- * Col Width
- */
-$this->polatan->add_col(array(
-    'width' => 2,
-), 1);
 
 /**
  * Meta
  */
 $this->polatan->add_meta(array(
     'col_id'    => 1,
+    'class' => 'col-12',
     'namespace' => 'form_addkit',
     'type'      => 'card',
     'gui_saver' => false,
@@ -57,6 +50,7 @@ $this->polatan->add_meta(array(
  */
 $this->polatan->add_item(array(
     'type'     => 'text',
+    'class' => 'col-12',
     'label'    => __('Title'),
     'name'     => 'name',
     'required' => true,

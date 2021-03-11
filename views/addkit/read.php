@@ -13,25 +13,22 @@
  */
 
 // Toolbar
-$this->events->add_filter( 'toolbar', function( $toolbar ) {
-    if ( User::control('create.addkit') ) {
-        $toolbar[] = array(
-            'id' => 1,
-            'parent'  => NULL,
-            'name'   => __('Add A AddKit', 'addkit'),
-            'icon'    => 'icon ni ni-reports',
-            'color'  => 'btn-light-primary',
-            'slug'    => [ 'admin', 'addkit', 'add' ]
-        );
-    };
-
-    return $toolbar;
+$this->events->add_filter( 'toolbar_nav', function( $final ) {
+    $final[] = array(
+        'id' => 1,
+        'name'   => __('Add A addkit'),
+        'icon'    => 'ki ki-plus',
+        'attr_anchor'  => 'class="btn btn-light-primary btn-sm font-weight-bolder"',
+        'slug'    => [ 'admin', 'addkit', 'add' ],
+        'permission' => 'create.addkit'
+    );
+    return $final;
 });
-
-$this->polatan->col_width(1, 4);
 
 $this->polatan->add_meta(array(
     'namespace' => 'addkit',
+    'class' => 'col-12',
+    'card' => 'card-px-0 border-0',
     'col_id' => 1,
     'type' => 'card'
 ));
