@@ -5,7 +5,7 @@ var DatatableScript = function() {
         var array = <?php echo $addkit;?>;
         var dataSet;
         if (Object.keys(array).length) {
-            dataSet = JSON.parse('<?php echo $addkit;?>');
+            dataSet = JSON.parse(array);
         }
         var datatable = $('#kt_datatable').KTDatatable({
 			data: {

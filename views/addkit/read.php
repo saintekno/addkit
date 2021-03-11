@@ -41,11 +41,4 @@ $this->polatan->add_item(array(
     'data' => json_decode($addkit)
 ), 'addkit', 1);
 
-/**
- * Script
- */
-$this->events->add_action( 'dashboard_footer', function() {
-    $this->load->addon_view( 'addkit', 'addkit/datatable');
-});
-
 $this->polatan->output();
