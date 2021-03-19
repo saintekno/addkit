@@ -171,7 +171,6 @@ class AddKit_Controller extends MY_Addon
         if ( $index == null ) 
         {
             $ids = $this->input->post('ids');
-    
             foreach($ids as $id){
                 $this->addkit_model->delete($id);
             }
