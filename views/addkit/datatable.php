@@ -2,23 +2,16 @@
 var DatatableScript = function() {   
     // Read
     var read = function() {
-        var array = <?php echo $addkit;?>;
+        var array = '<?php echo $addkit;?>';
         var dataSet;
         if (Object.keys(array).length) {
-            for (i=0; i<array.length; i++) 
-            {
-                if (KTSains.isJson(array[i].value)) {
-                    dataSet = JSON.parse(array[i].value.toString());
-                    array[i].value = dataSet;
-                }
-            }
-            dataSet = array;
+            dataSet = JSON.parse(array);
         }
         var datatable = $('#kt_datatable').KTDatatable({
 			data: {
 				type: 'local',
 				source: dataSet,
-				pageSize: 10, // display 20 records per page
+				pageSize: 15, // display 20 records per page
 			},
             search: {
                 input: $('#search_query'),
@@ -37,6 +30,7 @@ var DatatableScript = function() {
                 }, {
                     field: 'name',
                     title: 'Name',
+                    width: 200,
                 }, {
 					field: 'Actions',
 					title: 'Actions',
@@ -44,6 +38,7 @@ var DatatableScript = function() {
 					sortable: false,
                     autoHide: false,
 					overflow: 'visible',
+                    width: 100,
 					template: function(row) {
                         var edit  = '<button class="btn btn-light" disabled><i class="fas fa-pen"></i></button>';
                         var hapus = '<button class="btn btn-sm btn-icon btn-light" disabled><i class="fas fa-trash-alt"></i></button>';

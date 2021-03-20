@@ -20,7 +20,7 @@ class AddKit_Menu extends CI_model
         $this->events->add_filter( 'menu_nav', array( $this, 'menu_nav' ));
     }
 
-	public function _header_menu($menu) {
+	public function _header_nav($menu) {
         $menu[] = array(
             'id' => 4,
             'title' => __('List'),

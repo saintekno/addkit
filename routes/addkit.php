@@ -21,7 +21,7 @@ class AddKit_Controller extends MY_Addon
         parent::__construct();
 
         // Load Header menu, optional!
-        // $this->events->add_filter( 'header_menu', array( new AddKit_Menu, '_header_menu' ));
+        // $this->events->add_filter( 'header_nav', array( new AddKit_Menu, '_header_nav' ));
     }
 
     private function breadcrumb($array = array())
@@ -174,8 +174,6 @@ class AddKit_Controller extends MY_Addon
             foreach($ids as $id){
                 $this->addkit_model->delete($id);
             }
-            echo 1;
-            exit;
         }
         else {
             $exec = $this->addkit_model->delete($index);
