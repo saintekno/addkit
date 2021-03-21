@@ -2,35 +2,45 @@
 var DatatableScript = function() {   
     // Read
     var read = function() {
-        var array = '<?php echo $addkit;?>';
-        var dataSet;
-        if (Object.keys(array).length) {
-            dataSet = JSON.parse(array);
-        }
         var datatable = $('#kt_datatable').KTDatatable({
 			data: {
-				type: 'local',
-				source: dataSet,
-				pageSize: 15, // display 20 records per page
+				type: 'remote',
+                source: '<?php echo site_url(['api', 'addkit']);?>',
+				pageSize: 20, // display 20 records per page
 			},
+
+            // layout definition
+            layout: {
+                scroll: true, // enable/disable datatable scroll both horizontal and vertical when needed.
+                height: true, // datatable's body's fixed height
+                footer: false, // display/hide footer
+            },
+
+            // column sorting
+            sortable: true,
+
+            pagination: true,
+
             search: {
                 input: $('#search_query'),
                 key: 'generalSearch'
             },  
+            
             // columns definition
             columns: [
                 {
-                    field: 'checkbox',
-                    title: '',
-                    template: '{{id}}',
+                    field: 'id',
+                    title: '#',
                     sortable: false,
                     width: 20,
+                    type: 'number',
+                    selector: {
+                        class: ''
+                    },
                     textAlign: 'center',
-                    selector: {class: 'kt-checkbox--solid'},
                 }, {
                     field: 'name',
                     title: 'Name',
-                    width: 200,
                 }, {
 					field: 'Actions',
 					title: 'Actions',
