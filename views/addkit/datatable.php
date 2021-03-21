@@ -17,15 +17,13 @@ var DatatableScript = function() {
             // columns definition
             columns: [
                 {
-                    field: 'id',
-                    title: '#',
+                    field: 'checkbox',
+                    title: '',
+                    template: '{{id}}',
                     sortable: false,
                     width: 20,
-                    type: 'number',
-                    selector: {
-                        class: ''
-                    },
                     textAlign: 'center',
+                    selector: {class: 'kt-checkbox--solid'},
                 }, {
                     field: 'name',
                     title: 'Name',
