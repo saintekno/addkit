@@ -52,9 +52,6 @@ class AddKit_Controller extends MY_Addon
             redirect(site_url('admin/page404'));
         }
         
-        // Load Model
-        $this->load->model('addkit_model');
-        
         // Title
 		Polatan::set_title(sprintf(__('AddKit'.' &mdash; %s', 'addkit'), get('signature')));
 
