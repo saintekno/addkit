@@ -85,7 +85,7 @@ class AddKit_Controller extends MY_Addon
             $exec = $this->addkit_model->insert();
 
             if ($exec == 'created') :
-            redirect(array( 'admin', 'addkit?notice=' )); 
+            redirect(array( 'admin', 'addkit?notice='.$exec )); 
             endif;
             
             $this->notice->push_notice_array($exec);
