@@ -47,7 +47,10 @@ class AddKit_model extends MY_Model
     public function insert($data = null)
     {
         $data[ 'name' ] = $this->input->post('name');
-        return parent::insert($data);
+
+        if (parent::insert($data)):
+        return 'created';
+        endif;
     }
 
     /**
@@ -62,7 +65,10 @@ class AddKit_model extends MY_Model
     public function update($where = null, $data = null)
     {
         $data[ 'name' ] = $this->input->post('name');
-        return parent::update($where, $data);
+        
+        if (parent::update($where, $data)):
+        return 'updated';
+        endif;
     }
 
     /**
@@ -77,6 +83,8 @@ class AddKit_model extends MY_Model
      */
     public function delete($id = null)
     {
-        return parent::delete($id);
+        if (parent::delete($id)):
+        return 'deleted';
+        endif;
     }
 }

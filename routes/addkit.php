@@ -84,11 +84,11 @@ class AddKit_Controller extends MY_Addon
         {
             $exec = $this->addkit_model->insert();
 
-            if ($exec) {
-                redirect(array( 'admin', 'addkit?notice=created' ));
-            } else {
-                $this->notice->push_notice_array($exec);
-            }
+            if ($exec == 'created') :
+            redirect(array( 'admin', 'addkit?notice=' )); 
+            endif;
+            
+            $this->notice->push_notice_array($exec);
         }
         
         // Title
@@ -125,11 +125,11 @@ class AddKit_Controller extends MY_Addon
         {
             $exec = $this->addkit_model->update($index);
 
-            if ($exec) {
-                redirect(array( 'admin', 'addkit?notice=updated' ));
-            } else {
-                $this->notice->push_notice_array($exec);
-            }
+            if ($exec == 'updated') :
+            redirect(array( 'admin', 'addkit?notice='.$exec )); 
+            endif;
+
+            $this->notice->push_notice_array($exec);
         }
         
         // Title
@@ -173,13 +173,13 @@ class AddKit_Controller extends MY_Addon
         else {
             $exec = $this->addkit_model->delete($index);
 
-            if ($exec) {
-                $this->session->set_flashdata('flash_message', __('deleted'));
+            if ($exec == 'deleted') {
+                $this->session->set_flashdata('flash_message', __(($exec));
             } else {
                 $this->session->set_flashdata('flash_message', __('unexpected-error'));
             };
             
-            redirect(current_url(), 'refresh');
+            // redirect(current_url(), 'refresh');
         }
     }
 }
