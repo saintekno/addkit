@@ -61,8 +61,6 @@ class AddKit_Controller extends MY_Addon
         // BreadCrumb
         $data['breadcrumbs'] = $this->breadcrumb();
 
-        $data['addkits'] = $this->addkit_model->as_json()->find_all();
-
         $this->events->add_action( 'dashboard_footer', function() use ( $data ) {
             $this->load->addon_view( 'addkit', 'addkit/datatable', $data);
         });

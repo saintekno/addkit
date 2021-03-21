@@ -9,18 +9,6 @@ var DatatableScript = function() {
 				pageSize: 20, // display 20 records per page
 			},
 
-            // layout definition
-            layout: {
-                scroll: true, // enable/disable datatable scroll both horizontal and vertical when needed.
-                height: true, // datatable's body's fixed height
-                footer: false, // display/hide footer
-            },
-
-            // column sorting
-            sortable: true,
-
-            pagination: true,
-
             search: {
                 input: $('#search_query'),
                 key: 'generalSearch'
@@ -77,20 +65,6 @@ var DatatableScript = function() {
 				}
             ],
         });
-        
-        datatable.on(
-            'datatable-on-check datatable-on-uncheck',
-            function(e) {
-                var checkedNodes = datatable.rows('.datatable-row-active').nodes();
-                var count = checkedNodes.length;
-                $('#kt_datatable_selected_records').html(count);
-                if (count > 0) {
-                    $('#kt_datatable_group_action_form').collapse('show');
-                } else {
-                    $('#kt_datatable_group_action_form').collapse('hide');
-                }
-            }
-        );
     };
 
     return {
