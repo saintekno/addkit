@@ -23,7 +23,7 @@ class addkitApiController extends MY_Addon
 
 	public function index()
 	{
-        $addkit = $this->addkit_model->as_json()->find_all();
+        $addkit = $this->addkit_model->find_all();
 
         return response()->json($addkit);
 	}
