@@ -174,7 +174,7 @@ class AddKit_Controller extends MY_Addon
             $exec = $this->addkit_model->delete($index);
 
             if ($exec == 'deleted') {
-                $this->session->set_flashdata('flash_message', __(($exec));
+                $this->session->set_flashdata('flash_message', __(($exec)));
             } else {
                 $this->session->set_flashdata('flash_message', __('unexpected-error'));
             };
