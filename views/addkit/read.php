@@ -40,7 +40,6 @@ $this->events->add_filter('toolbar_filter', function ($filter) { // disabling he
 $this->polatan->add_meta(array(
     'namespace' => 'addkit',
     'class' => 'col-12',
-    'card' => 'card-px-0 border-0',
     'col_id' => 1,
     'type' => 'card'
 ));
