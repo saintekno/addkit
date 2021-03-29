@@ -22,12 +22,10 @@ class AddKit_Menu extends CI_model
 
 	public function _header_nav($menu) {
         $menu[] = array(
-            'id' => 4,
-            'title' => __('List'),
-            'slug' => [ 'admin', 'addkit' ],
+            'id' => 1, 'parent' => 0, 'order' => 1,
+            'title' => __('List'), 'slug' => [ 'admin', 'addkit' ],
             'icon' => 'la la-list',
             'permission' => 'read.addkit',
-            'order' => 4
         );
         return $menu;
 	}
@@ -38,12 +36,10 @@ class AddKit_Menu extends CI_model
     **/
 	public function menu_nav($menu) {
 		$final[] = array(
-			'id' => 1,
-			'name' => __('Addkit'),
+            'id' => 1, 'parent' => 0, 'order' => 1,
+			'name' => __('Addkit'), 'slug' => [ 'admin', 'addkit' ],
 			'icon' => 'fas fa-globe',
-			'slug' => [ 'admin', 'addkit' ],
             'permission' => 'read.addkit',
-            'order' => 4
 		);
         return $final;
 	}
