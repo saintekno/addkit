@@ -27,13 +27,11 @@ class AddKit_Controller extends MY_Addon
     private function breadcrumb($array = array())
     {
         $this->breadcrumbs[] = array(
-            'id' => 1,
-            'name' => __('Home'), 
+            'id' => 1, 'name' => __('Home'), 
             'slug' => site_url('admin')
         );
         $this->breadcrumbs[] = array(
-            'id' => 2,
-            'name' => __('AddKit', 'addkit'), 
+            'id' => 2, 'name' => __('AddKit', 'addkit'), 
             'slug' => site_url('admin/addkit')
         );
         ($array) ? $this->breadcrumbs[] = $array : '';
@@ -96,9 +94,7 @@ class AddKit_Controller extends MY_Addon
         
         // BreadCrumb
         $data['breadcrumbs'] = $this->breadcrumb(array( 
-            'id' => 3,
-            'name' => __('Add New'), 
-            'slug' => site_url('admin') )
+            'id' => 3, 'name' => __('Add New'), 'slug' => site_url('admin') )
         );
 
         $this->addon_view( 'addkit', 'addkit/form', $data );
@@ -137,9 +133,7 @@ class AddKit_Controller extends MY_Addon
         
         // BreadCrumb
         $data['breadcrumbs'] = $this->breadcrumb( array( 
-            'id' => 3,
-            'name' => __('Edit'), 
-            'slug' => site_url('admin') )
+            'id' => 3, 'name' => __('Edit'), 'slug' => site_url('admin') )
         );
 
         $data['addkit_detail'] = $this->addkit_model->find($index);

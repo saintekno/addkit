@@ -2,6 +2,7 @@
     "application": {
         "name": "AddKit",
         "namespace": "addkit",
+        "package": "SainTekno",
         "version": "3.13.0",
         "author": "saintekno",
         "author uri": "http://saintekno.id",
