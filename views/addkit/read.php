@@ -13,7 +13,7 @@
  */
 
 // Toolbar
-$this->events->add_filter( 'toolbar_nav', function( $final ) {
+$this->events->add_filter( 'fill_toolbar_nav', function( $final ) {
     $final[] = array(
         'id' => 1,
         'name'   => __('Add A addkit'),
@@ -25,7 +25,7 @@ $this->events->add_filter( 'toolbar_nav', function( $final ) {
     return $final;
 });
 
-$this->events->add_filter('toolbar_filter', function ($filter) { // disabling header
+$this->events->add_filter( 'fill_toolbar_filter', function ($filter) { // disabling header
     $filter[] = '
     <div class="row">
         <div class="input-icon col mb-1 mb-sm-0">

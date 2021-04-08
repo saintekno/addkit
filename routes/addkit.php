@@ -21,7 +21,7 @@ class AddKit_Controller extends MY_Addon
         parent::__construct();
 
         // Load Header menu, optional!
-        // $this->events->add_filter( 'header_nav', array( new AddKit_Menu, '_header_nav' ));
+        // $this->events->add_filter( 'fill_header_nav', array( new AddKit_Menu, '_header_nav' ));
     }
 
     private function breadcrumb($array = array())

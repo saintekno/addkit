@@ -17,7 +17,7 @@ class AddKit_Menu extends CI_model
     public function __construct()
     {
 		parent::__construct();
-        $this->events->add_filter( 'menu_nav', array( $this, 'menu_nav' ));
+        $this->events->add_filter( 'fill_menu_nav', array( $this, 'menu_nav' ));
     }
 
 	public function _header_nav($menu) {
