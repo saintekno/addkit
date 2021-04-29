@@ -23,7 +23,7 @@ class AddKit_Menu extends CI_model
 	public function _header_nav($menu) {
         $menu[] = array(
             'id' => 1, 'parent' => 0, 'order' => 1,
-            'title' => __('List'), 'slug' => [ 'admin', 'addkit' ],
+            'name' => __('List'), 'slug' => [ 'admin', 'addkit' ],
             'icon' => 'la la-list',
             'permission' => 'read.addkit',
         );

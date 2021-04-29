@@ -129,7 +129,7 @@ class AddKit_Controller extends MY_Addon
         }
         
         // Title
-		Polatan::set_title(sprintf(__('AddKit'.' &mdash; %s'), get('signature')));
+		Polatan::set_title(sprintf(__('AddKit'.' &mdash; %s', 'addkit'), get('signature')));
         
         // BreadCrumb
         $data['breadcrumbs'] = $this->breadcrumb( array( 
@@ -172,8 +172,6 @@ class AddKit_Controller extends MY_Addon
             } else {
                 $this->session->set_flashdata('flash_message', __('unexpected-error'));
             };
-            
-            // redirect(current_url(), 'refresh');
         }
     }
 }

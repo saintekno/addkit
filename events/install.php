@@ -51,7 +51,7 @@ class AddKit_Install extends CI_model
     {
         $table_prefix =	$this->db->dbprefix;
 
-        // $this->db->query("DROP TABLE IF EXISTS `{$table_prefix}addkit`;");
+        // $this->db->query("CREATE TABLE IF NOT EXISTS `{$table_prefix}addkit` (
         // $this->db->query("CREATE TABLE `{$table_prefix}addkit` (
         //     `id` int(11) NOT NULL AUTO_INCREMENT,
         //     `name` varchar(255) DEFAULT NULL,
@@ -83,17 +83,31 @@ class AddKit_Install extends CI_model
     **/
     public function permissions()
     {
-        // Addkit Permissions
-        // $this->aauth->create_perm('read.addkit', 'Read addkit');
-        // $this->aauth->create_perm('create.addkit', 'Create addkit');
-        // $this->aauth->create_perm('edit.addkit', 'Edit addkit');
-        // $this->aauth->create_perm('delete.addkit', 'Delete addkit');
+		// all permissions
+		// $permissions = [];
+		// $permissions[ 'read.addkit' ]   = __( 'Read addkit' );
+		// $permissions[ 'create.addkit' ] = __( 'Create addkit' );
+		// $permissions[ 'edit.addkit' ]   = __( 'Edit addkit' );
+		// $permissions[ 'delete.addkit' ] = __( 'Delete addkit' );
+		// foreach( $permissions as $namespace => $perm ) {
+		// 	$this->aauth->create_perm( 
+		// 		$namespace,
+		// 		$perm
+		// 	);
+		// }
 
-        // Assign Permission Addkit to Groups
-        // $this->aauth->allow_group('member', 'read.addkit');
-        // $this->aauth->allow_group('member', 'create.addkit');
-        // $this->aauth->allow_group('member', 'update.addkit');
-        // $this->aauth->allow_group('member', 'delete.addkit');
+        // // Assign Permission addkit to Groups
+		// $permissions_keys =	array_keys( $permissions );
+		// foreach([ 
+		// 	'addkit',
+		// ] as $component ) {
+		// 	foreach([ 'create.', 'edit.', 'delete.', 'view.' ] as $action ) {
+		// 		$permission = $action . $component;
+		// 		if ( in_array( $permission, $permissions_keys ) ) {
+		// 			$this->aauth->allow_group( 'member', $permission );
+		// 		}
+		// 	}
+		// }
     }
 
     /**
@@ -123,10 +137,14 @@ class AddKit_Install extends CI_model
         // $this->db->query("DROP TABLE IF EXISTS `{$table_prefix}addkit`;");
         
         // Delete Permissions
-        // $this->aauth->delete_perm('read.addkit');
-        // $this->aauth->delete_perm('create.addkit');
-        // $this->aauth->delete_perm('edit.addkit');
-        // $this->aauth->delete_perm('delete.addkit');
+		// foreach([ 
+		// 	'addkit',
+		// ] as $component ) {
+		// 	foreach([ 'create.', 'edit.', 'delete.', 'view.' ] as $action ) {
+		// 		$permission = $action . $component;
+        //         $this->aauth->delete_perm( $permission );
+		// 	}
+		// }
     }
 }
 new AddKit_Install;
