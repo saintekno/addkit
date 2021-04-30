@@ -52,7 +52,6 @@ class AddKit_Install extends CI_model
         $table_prefix =	$this->db->dbprefix;
 
         // $this->db->query("CREATE TABLE IF NOT EXISTS `{$table_prefix}addkit` (
-        // $this->db->query("CREATE TABLE `{$table_prefix}addkit` (
         //     `id` int(11) NOT NULL AUTO_INCREMENT,
         //     `name` varchar(255) DEFAULT NULL,
         //     `created_on` datetime NOT NULL,
