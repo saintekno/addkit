@@ -56,6 +56,10 @@ class AddKit_Install extends CI_model
         //     `name` varchar(255) DEFAULT NULL,
         //     `created_on` datetime NOT NULL,
         //     `modified_on` datetime NOT NULL,
+        //     `deleted` tinyint(1) NOT NULL,
+        //     `created_by` varchar(255) DEFAULT NULL,
+        //     `modified_by` varchar(255) DEFAULT NULL,
+        //     `deleted_by` varchar(255) DEFAULT NULL,
         //     PRIMARY KEY (`id`)
         // )");
     }
