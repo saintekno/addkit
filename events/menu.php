@@ -35,13 +35,13 @@ class AddKit_Menu extends CI_model
      * [New Permission Ready]
     **/
 	public function menu_nav($menu) {
-		$final[] = array(
+		$menu[] = array(
             'id' => 1, 'parent' => 0, 'order' => 1,
 			'name' => __('Addkit'), 'slug' => [ 'admin', 'addkit' ],
 			'icon' => 'fas fa-globe',
             'permission' => 'read.addkit',
 		);
-        return $final;
+        return $menu;
 	}
 }
 new AddKit_Menu;

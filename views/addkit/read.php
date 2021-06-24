@@ -12,7 +12,10 @@
  * @filesource
  */
 
-// Toolbar
+/**========================================================================
+ *                           Toolbar
+ *========================================================================**/
+// Toolbar Nav
 $this->events->add_filter( 'fill_toolbar_nav', function( $final ) {
     $final[] = array(
         'id' => 1,
@@ -25,6 +28,7 @@ $this->events->add_filter( 'fill_toolbar_nav', function( $final ) {
     return $final;
 });
 
+// Tolbar Filter
 $this->events->add_filter( 'fill_toolbar_filter', function ($filter) { // disabling header
     $filter[] = '
     <div class="row">
@@ -37,6 +41,9 @@ $this->events->add_filter( 'fill_toolbar_filter', function ($filter) { // disabl
     return $filter;
 });
 
+/**========================================================================
+ *                           Polatan
+ *========================================================================**/
 $this->polatan->add_meta(array(
     'namespace' => 'addkit',
     'class' => 'col-12',
@@ -47,5 +54,10 @@ $this->polatan->add_meta(array(
 $this->polatan->add_item(array(
     'type' => 'table-datatable',
 ), 'addkit', 1);
+
+// $this->polatan->add_item(array(
+//     'type'    => 'dom',
+//     'content' => $this->addon_view( 'addkit', 'addkit/datalists', array(), true )
+// ), 'addkit', 1);
 
 $this->polatan->output();
