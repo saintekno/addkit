@@ -33,7 +33,7 @@ class AddKit_Install extends CI_model
     **/
     public function enable_addon($namespace)
     {
-        if ($namespace === 'addkit' && $this->options_model->get('addkit_installed') == null) {
+        if ($namespace === 'addkit' && $this->options_model->get('addkit_installed', 'addkit') == null) {
             // Install Tables
             $this->install_tables();
             $this->permissions();
