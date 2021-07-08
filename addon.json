@@ -3,6 +3,7 @@
         "name": "AddKit",
         "namespace": "addkit",
         "package": "addkit",
+        "type": "addkit",
         "version": "3.17.1",
         "author": "saintekno",
         "author uri": "http://saintekno.id",
