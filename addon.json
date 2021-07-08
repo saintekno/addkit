@@ -10,8 +10,8 @@
         "description": "AddKit by SainTekno",
         "updated": "00.00.0000",
         "main": "main.php",
+        "includes": "events",
         "language": "language",
         "readonly": false
-    },
-    "group": "By AddKit"
+    }
 }

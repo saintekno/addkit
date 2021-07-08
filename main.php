@@ -21,11 +21,3 @@ class AddKit_Addons extends CI_model
     }
 }
 new AddKit_Addons;
-
-include_once(dirname(__FILE__) . '/events/actions.php');
-include_once(dirname(__FILE__) . '/events/install.php');
-include_once(dirname(__FILE__) . '/events/filters.php');
-
-if (get_instance()->install_model->is_installed()) {
-    include_once(dirname(__FILE__) . '/events/menu.php');
-}

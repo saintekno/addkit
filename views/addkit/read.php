@@ -55,9 +55,4 @@ $this->polatan->add_item(array(
     'type' => 'table-datatable',
 ), 'addkit', 1);
 
-// $this->polatan->add_item(array(
-//     'type'    => 'dom',
-//     'content' => $this->addon_view( 'addkit', 'addkit/datalists', array(), true )
-// ), 'addkit', 1);
-
 $this->polatan->output();
