@@ -11,7 +11,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * @link        https://github.com/saintekno/sainsuite
  * @filesource
  */
-class AddKit_Addons extends CI_model
+class AddKit_Addons extends MY_Addon
 {
     public function __construct()
     {
