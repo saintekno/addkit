@@ -88,9 +88,9 @@ class AddKit_Install extends MY_Addon
     {
 		// all permissions
 		$permissions = [];
-		$permissions[ 'read.addkit' ]   = __( 'Read addkit' );
 		$permissions[ 'create.addkit' ] = __( 'Create addkit' );
-		$permissions[ 'edit.addkit' ]   = __( 'Edit addkit' );
+		$permissions[ 'read.addkit' ]   = __( 'Read addkit' );
+		$permissions[ 'update.addkit' ]   = __( 'Edit addkit' );
 		$permissions[ 'delete.addkit' ] = __( 'Delete addkit' );
 		foreach( $permissions as $namespace => $perm ) {
 			$this->aauth->create_perm( 
@@ -104,7 +104,9 @@ class AddKit_Install extends MY_Addon
 		foreach([ 
 			'addkit',
 		] as $component ) {
-			foreach([ 'create.', 'edit.', 'delete.', 'view.' ] as $action ) {
+			foreach([ 
+                'create.', 'read.', 'update.', 'delete.'
+            ] as $action ) {
 				$permission = $action . $component;
 				if ( in_array( $permission, $permissions_keys ) ) {
 					$this->aauth->allow_group( 'member', $permission );
@@ -143,7 +145,9 @@ class AddKit_Install extends MY_Addon
 		foreach([ 
 			'addkit',
 		] as $component ) {
-			foreach([ 'create.', 'edit.', 'delete.', 'view.' ] as $action ) {
+			foreach([ 
+                'create.', 'read.', 'update.', 'delete.'
+            ] as $action ) {
 				$permission = $action . $component;
                 $this->aauth->delete_perm( $permission );
 			}

@@ -38,7 +38,7 @@ var DatatableScript = function() {
 					template: function(row) {
                         var edit  = '<button class="btn btn-light" disabled><i class="fas fa-pen"></i></button>';
                         var hapus = '<button class="btn btn-sm btn-icon btn-light" disabled><i class="fas fa-trash-alt"></i></button>';
-                        <?php if ( User::control('edit.addkit')) : ?>
+                        <?php if ( User::control('update.addkit')) : ?>
 						edit = '\
                             <a class="btn btn-sm btn-icon btn-light-primary btn-hover-primary "\
                                 href="<?php echo site_url(array( 'admin', 'addkit', 'edit'));?>/'+ row.id +'">\

@@ -108,7 +108,7 @@ class AddKit_Controller extends MY_Addon
     public function edit( $index = "" )
     {
         // Can user access ?
-        if (! User::control('edit.addkit')) {
+        if (! User::control('update.addkit')) {
             $this->session->set_flashdata('error_message', __( 'Access denied. Your are not allowed to see this page.' ));
             redirect(site_url('admin/page404'));
         }
