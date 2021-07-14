@@ -20,7 +20,7 @@ $this->events->add_filter( 'fill_toolbar_nav', function( $final ) {
         'name'   => __('Back to the list'),
         'icon'    => 'ki ki-long-arrow-back',
         'attr_anchor'  => 'class="btn btn-light btn-sm font-weight-bolder"',
-        'slug'    => [ 'admin', 'addkit' ],
+        'slug'    => site_url([ 'admin', 'addkit' ]),
         'permission' => 'create.addkit'
     );
     return $final;

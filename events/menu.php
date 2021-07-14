@@ -23,7 +23,7 @@ class AddKit_Menu extends MY_Addon
 	public function _header_nav($menu) {
         $menu[] = array(
             'id' => 1, 'parent' => 0, 'order' => 1,
-            'name' => __('List', 'addkit'), 'slug' => [ 'admin', 'addkit' ],
+            'name' => __('List', 'addkit'), 'slug' => site_url([ 'admin', 'addkit' ]),
             'permission' => 'read.addkit',
         );
         return $menu;
@@ -36,7 +36,7 @@ class AddKit_Menu extends MY_Addon
 	public function menu_nav($menu) {
 		$menu[] = array(
             'id' => 1, 'parent' => 0, 'order' => 1, 'icon' => 'text',
-			'name' => __('Addkit', 'addkit'), 'slug' => [ 'admin', 'addkit' ],
+			'name' => __('Addkit', 'addkit'), 'slug' => site_url([ 'admin', 'addkit' ]),
             'permission' => 'read.addkit',
 		);
         return $menu;
