@@ -2,7 +2,7 @@
 var DatatableScript = function() {   
     // Read
     var read = function() {
-        var datatable = $('#kt_datatable').KTDatatable({
+        var datatable = $('#sit_datatable').SITDatatable({
 			data: {
 				type: 'remote',
                 source: '<?php echo site_url(['api', 'addkit']);?>',
