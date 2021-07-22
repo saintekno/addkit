@@ -45,10 +45,7 @@ class AddKit_Controller extends MY_Addon
     public function index()
     {        
         // Can user access ?
-        if ( ! User::control('read.addkit') ) {
-            $this->session->set_flashdata('error_message', __( 'Access denied. Your are not allowed to see this page.' ));
-            redirect(site_url('admin/page404'));
-        }
+        User::control('read.addkit');
         
         // Title
 		Polatan::set_title(sprintf(__('AddKit'.' &mdash; %s', 'addkit'), get('signature')));
@@ -69,10 +66,7 @@ class AddKit_Controller extends MY_Addon
     public function add()
     {
         // Can user access ?
-        if (! User::control('create.addkit')) {
-            $this->session->set_flashdata('error_message', __( 'Access denied. Your are not allowed to see this page.' ));
-            redirect(site_url('admin/page404'));
-        }
+        User::control('create.addkit');
 
         // Load Model
         $this->load->model('addkit_model');
@@ -108,10 +102,7 @@ class AddKit_Controller extends MY_Addon
     public function edit( $index = "" )
     {
         // Can user access ?
-        if (! User::control('update.addkit')) {
-            $this->session->set_flashdata('error_message', __( 'Access denied. Your are not allowed to see this page.' ));
-            redirect(site_url('admin/page404'));
-        }
+        User::control('update.addkit');
 
         // Load Model
         $this->load->model('addkit_model');
@@ -148,10 +139,7 @@ class AddKit_Controller extends MY_Addon
     public function delete( $index = null )
     {
         // Can user access ?
-        if (! User::control('delete.addkit')) {
-            $this->session->set_flashdata('error_message', __( 'Access denied. Your are not allowed to see this page.' ));
-            redirect(site_url('admin/page404'));
-        }
+        User::control('delete.addkit');
         
         // Load Model
         $this->load->model('addkit_model');

@@ -21,7 +21,7 @@ $this->events->add_filter( 'fill_toolbar_nav', function( $final ) {
         'id' => 1,
         'name'   => __('Add A addkit'),
         'icon'    => 'ki ki-plus',
-        'attr_anchor'  => 'class="btn btn-light-primary btn-sm font-weight-bolder"',
+        'attr_anchor'  => 'class="btn btn-light-primary btn-sm font-weight-bolder ml-2"',
         'slug'    => site_url([ 'admin', 'addkit', 'add' ]),
         'permission' => 'create.addkit'
     );

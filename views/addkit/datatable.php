@@ -38,7 +38,7 @@ var DatatableScript = function() {
 					template: function(row) {
                         var edit  = '<button class="btn btn-light" disabled><i class="fas fa-pen"></i></button>';
                         var hapus = '<button class="btn btn-sm btn-icon btn-light" disabled><i class="fas fa-trash-alt"></i></button>';
-                        <?php if ( User::control('update.addkit')) : ?>
+                        <?php if ( User::is_allowed('update.addkit')) : ?>
 						edit = '\
                             <a class="btn btn-sm btn-icon btn-light-primary btn-hover-primary "\
                                 href="<?php echo site_url(array( 'admin', 'addkit', 'edit'));?>/'+ row.id +'">\
@@ -47,7 +47,7 @@ var DatatableScript = function() {
                         ';
                         <?php endif; ?>
 
-                        <?php if ( User::control('delete.addkit')) : ?>
+                        <?php if ( User::is_allowed('delete.addkit')) : ?>
                         hapus = '\
                             <button class="btn btn-sm btn-icon btn-light-danger btn-hover-danger "\
                                 data-head="<?php echo _s( 'Would you like to delete this data?' ) ;?>"\
