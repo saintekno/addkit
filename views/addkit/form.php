@@ -26,11 +26,7 @@ $this->polatan->add_meta(array(
     'form'      => array(
         'action' => null,
     ),
-    'footer' => array(
-        'submit' => array(
-            'label' => __((in_array('add', $this->uri->segment_array())) ? 'Create addkit' : 'Save change')
-        )
-    )
+    'footer' => 'add',
 ));
 
 /**

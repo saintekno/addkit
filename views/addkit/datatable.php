@@ -2,7 +2,7 @@
 var DatatableScript = function() {   
     // Read
     var read = function() {
-        var datatable = $('#sit_datatable').SITDatatable({
+        var datatable = $('#ss_datatable').SSDatatable({
 			data: {
 				type: 'remote',
                 source: '<?php echo site_url(['api', 'addkit']);?>',
@@ -65,7 +65,7 @@ var DatatableScript = function() {
 
             translate: {
                 records: {
-                    noRecords: '<img class="w-150px mb-5" src="'+baseUrl+'assets/admin/img/svg/not_found.svg"/><br>'+
+                    noRecords: '<img class="w-150px mb-5" src="'+sain_site_url+'assets/admin/img/svg/not_found.svg"/><br>'+
                     '<span class="text-uppercase font-weight-bold text-muted">WELL, BUDDY.</span> <br>'+
                     '<span>This space doesn\'t have a records so there\'s nothing to display here.</span>',
                 }
